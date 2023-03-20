@@ -1,12 +1,11 @@
 import { Normalize } from 'styled-normalize'
 
-function App() {
+function WexerPsi() {
   return (
     <div className="App">
       <Normalize />
-      <h1>oi</h1>
     </div>
   )
 }
 
-export default App
+export default WexerPsi
