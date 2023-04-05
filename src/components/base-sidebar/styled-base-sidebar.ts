@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import ReactComponent from '../../assets/icons/people.svg'
 
 export const SideBar = styled.nav`
   position: fixed;
@@ -12,6 +11,21 @@ export const SideBar = styled.nav`
   align-items: center;
   gap: 37.5px;
   padding: 28px 0px;
+  color: var(--white);
+
+  &:hover {
+    width: 263px;
+    padding-left: 28px;
+    display: flex;
+
+    align-items: start;
+  }
+
+  > div {
+    gap: 18px;
+    display: flex;
+    align-items: center;
+  }
 
   svg {
     fill: var(--white);

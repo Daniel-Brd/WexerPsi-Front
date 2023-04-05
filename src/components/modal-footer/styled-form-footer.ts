@@ -34,4 +34,8 @@ export const ConfirmButton = styled.button`
   border-radius: 24px;
   background-color: var(--main-green);
   color: var(--white);
+
+  &:disabled {
+    background-color: var(--light-green);
+  }
 `

@@ -18,7 +18,8 @@ export const Form = styled.form`
     padding-bottom: 16px;
   }
 
-  input[type='text'].small {
+  input[type='text'].small,
+  input[type='date'].small {
     height: 48px;
     width: 150px;
   }
@@ -39,6 +40,10 @@ export const Form = styled.form`
     width: 546px;
     height: 153px;
     resize: none;
+  }
+
+  small {
+    color: var(--sistem-red);
   }
 `
 export const Flex = styled.div`
