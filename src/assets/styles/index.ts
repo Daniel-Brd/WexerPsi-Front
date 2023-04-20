@@ -38,3 +38,38 @@ export const InputContainer = styled.div`
     fill: var(--gray-300);
   }
 `
+export const Hr = styled.hr`
+  border: 1px solid var(--gray-300);
+  margin: 24px 0;
+`
+export const HomeCard = styled.article`
+  position: relative;
+  width: 100%;
+  font-family: 'Montserrat';
+
+  h2 {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--gray-900);
+  }
+
+  p {
+    margin-top: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27.2px;
+    color: var(--gray-800);
+  }
+
+  small {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--gray-700);
+  }
+`
+export const FlexRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`

@@ -1,13 +1,13 @@
 import * as S from './styled-new-service'
-import * as PublicStyles from '../../assets/styles'
 import * as Icon from '../../assets/icons/db-icons'
 import { ReactElement, useState } from 'react'
-import NewSectionModal from '../new-section-modal/new-section-modal'
-import NewMaterialFactModal from '../new-material-fact-modal/new-material-fact'
+import NewAssessmentModal from '../modals/new-assessment-modal/new-assessment-modal'
+import NewAttachmentModal from '../modals/new-attachment-modal/new-attachment-modal'
+import NewMaterialFactModal from '../modals/new-material-fact-modal/new-material-fact'
+import NewSectionModal from '../modals/new-section-modal/new-section-modal'
 import SmallGreenButton from '../small-green-button/small-green-button'
 import SmallRedButton from '../small-red-button/small-red-button'
-import NewAttachmentModal from '../new-attachment-modal/new-attachment-modal'
-import NewAssessmentModal from '../new-assessment-modal/new-assessment-modal'
+import { Card, InputContainer, Hr } from '@/assets/styles'
 
 const NewService = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -25,19 +25,21 @@ const NewService = () => {
   return (
     <>
       {isModalOpen && modal}
-      <PublicStyles.Card>
+      <Card>
         <S.Container>
           <S.ServiceInfos>
             <label>
               <b>Serviço:</b>
-              <PublicStyles.InputContainer>
+              <InputContainer>
                 <S.Select>
                   <option>Novo Acompanhamento</option>
+                  <option>Porte de arma</option>
+                  <option>Adicionar novo serviço</option>
                 </S.Select>
                 <div>
                   <Icon.DownOne />
                 </div>
-              </PublicStyles.InputContainer>
+              </InputContainer>
             </label>
             <div>
               <b>Data inicial: </b> 18/10/2022
@@ -47,7 +49,7 @@ const NewService = () => {
               <SmallRedButton icon={<Icon.TrashTwo />} />
             </S.ButtonContainer>
           </S.ServiceInfos>
-          <S.Hr />
+          <Hr />
           <S.Items>
             <S.Item onClick={() => openModal(<NewSectionModal handleClose={closeModal} />)}>
               <Icon.MentalHealthFill />
@@ -67,7 +69,7 @@ const NewService = () => {
             </S.Item>
           </S.Items>
         </S.Container>
-      </PublicStyles.Card>
+      </Card>
     </>
   )
 }

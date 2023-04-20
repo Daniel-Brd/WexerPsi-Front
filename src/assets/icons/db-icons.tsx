@@ -63,6 +63,19 @@ export const MentalHealthFill = () => (
   </svg>
 )
 
+export const MentalHealthLine = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_1246_4433)">
+      <path d="M11 2C15.068 2 18.426 5.036 18.934 8.965L21.184 12.504C21.332 12.737 21.302 13.084 20.959 13.232L19 14.07V17C19 18.105 18.105 19 17 19H15.001L15 22H6V18.306C6 17.126 5.564 16.009 4.756 15.001C3.657 13.631 3 11.892 3 10C3 5.582 6.582 2 11 2ZM11 4C7.686 4 5 6.686 5 10C5 11.385 5.468 12.693 6.316 13.75C7.41 15.114 8 16.667 8 18.306V20H13L13.002 17H17V12.752L18.55 12.088L17.007 9.663L16.95 9.221C16.566 6.251 14.024 4 11 4ZM10.47 7.763L11 8.293L11.53 7.763C12.214 7.079 13.322 7.079 14.005 7.763C14.689 8.446 14.689 9.554 14.005 10.237L11 13.243L7.995 10.237C7.311 9.554 7.311 8.446 7.995 7.763C8.678 7.079 9.786 7.079 10.47 7.763Z" />
+    </g>
+    <defs>
+      <clipPath id="clip0_1246_4433">
+        <rect width="24" height="24" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
 export const SearchLine = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_1246_7369)">
@@ -102,6 +115,19 @@ export const TodoFill = () => (
   </svg>
 )
 
+export const TodoLine = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_1246_3321)">
+      <path d="M17 2H20C20.2652 2 20.5196 2.10536 20.7071 2.29289C20.8946 2.48043 21 2.73478 21 3V21C21 21.2652 20.8946 21.5196 20.7071 21.7071C20.5196 21.8946 20.2652 22 20 22H4C3.73478 22 3.48043 21.8946 3.29289 21.7071C3.10536 21.5196 3 21.2652 3 21V3C3 2.73478 3.10536 2.48043 3.29289 2.29289C3.48043 2.10536 3.73478 2 4 2H7V0H9V2H15V0H17V2ZM17 4V6H15V4H9V6H7V4H5V20H19V4H17ZM7 8H17V10H7V8ZM7 12H17V14H7V12Z" />
+    </g>
+    <defs>
+      <clipPath id="clip0_1246_3321">
+        <rect width="24" height="24" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
 export const TrashTwo = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="Icon/Fill/trash-2">
@@ -122,6 +148,19 @@ export const PushPinFill = () => (
     </g>
     <defs>
       <clipPath id="clip0_1246_5461">
+        <rect width="24" height="24" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
+export const PushPinLine = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_1246_5801)">
+      <path d="M13.828 1.68604L22.314 10.172L20.899 11.586L20.192 10.879L15.95 15.121L15.243 18.657L13.828 20.071L9.58605 15.828L4.63605 20.778L3.22205 19.364L8.17205 14.414L3.92905 10.172L5.34305 8.75704L8.88005 8.05004L13.122 3.80804L12.415 3.10104L13.829 1.68604H13.828ZM14.536 5.22204L9.86505 9.89204L7.04305 10.457L13.543 16.957L14.107 14.135L18.778 9.46504L14.536 5.22204Z" />
+    </g>
+    <defs>
+      <clipPath id="clip0_1246_5801">
         <rect width="24" height="24" fill="white" />
       </clipPath>
     </defs>
@@ -162,6 +201,22 @@ export const CloseCircle = () => (
     </g>
     <defs>
       <clipPath id="clip0_1246_7829">
+        <rect width="24" height="24" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
+export const Dots = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_1246_7585)">
+      <path
+        d="M4.5 10.5C3.675 10.5 3 11.175 3 12C3 12.825 3.675 13.5 4.5 13.5C5.325 13.5 6 12.825 6 12C6 11.175 5.325 10.5 4.5 10.5ZM19.5 10.5C18.675 10.5 18 11.175 18 12C18 12.825 18.675 13.5 19.5 13.5C20.325 13.5 21 12.825 21 12C21 11.175 20.325 10.5 19.5 10.5ZM12 10.5C11.175 10.5 10.5 11.175 10.5 12C10.5 12.825 11.175 13.5 12 13.5C12.825 13.5 13.5 12.825 13.5 12C13.5 11.175 12.825 10.5 12 10.5Z"
+        fill="#09121F"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_1246_7585">
         <rect width="24" height="24" fill="white" />
       </clipPath>
     </defs>

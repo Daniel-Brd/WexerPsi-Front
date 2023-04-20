@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
   h1{margin: 0;}
 
+
   b{margin:0;}
 
   button{

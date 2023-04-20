@@ -79,8 +79,3 @@ export const Item = styled.div`
   align-items: center;
   gap: 12px;
 `
-
-export const Hr = styled.hr`
-  border: 1px solid var(--gray-300);
-  margin: 24px 0;
-`

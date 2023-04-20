@@ -1,36 +1,29 @@
-import * as Styled from './styled-patient-infos'
-import * as PublicStyles from '../../assets/styles'
+import { Card } from '@/assets/styles'
+import * as S from './styled-patient-infos'
 
-type PatientType = {
-  name: string
-  birthday: string
-  occupation: string
-  education: string
-}
-
-const PatientInfos = ({ name, birthday, occupation, education }: PatientType) => {
+const PatientInfos = ({ name, birthdate, profession, schooling }: Partial<PatientType>) => {
   return (
-    <PublicStyles.Card>
-      <Styled.Container>
+    <Card>
+      <S.Container>
         <h1>Identificação do paciente</h1>
-        <Styled.Section>
+        <S.Section>
           <h2>Paciente</h2>
           <p>{name} </p>
-        </Styled.Section>
-        <Styled.Section>
+        </S.Section>
+        <S.Section>
           <h2>Nascimento</h2>
-          <p>{birthday} </p>
-        </Styled.Section>
-        <Styled.Section>
+          <p>{birthdate} </p>
+        </S.Section>
+        <S.Section>
           <h2>Profissão</h2>
-          <p>{occupation} </p>
-        </Styled.Section>
-        <Styled.Section>
+          <p>{profession} </p>
+        </S.Section>
+        <S.Section>
           <h2>Escolaridade</h2>
-          <p>{education} </p>
-        </Styled.Section>
-      </Styled.Container>
-    </PublicStyles.Card>
+          <p>{schooling} </p>
+        </S.Section>
+      </S.Container>
+    </Card>
   )
 }
 
