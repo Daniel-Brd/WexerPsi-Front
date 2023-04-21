@@ -9,9 +9,11 @@ import Attachment from '@/components/timeline/attachment/attachment'
 import MaterialFact from '@/components/timeline/material-fact/material-fact'
 import { useEffect, useState } from 'react'
 import { getPatientData } from '@/services/patient'
+import { getTimelineData } from '@/services/timeline'
 
 const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
+  const [timeLine, setTimeline] = useState<Partial<TimeLineType>>()
 
   useEffect(() => {
     const getPatient = async () => {
@@ -21,6 +23,15 @@ const MedicalRecord = () => {
       }
     }
     getPatient()
+
+    const getTimeline = async () => {
+      if (!timeLine) {
+        const { occurrences } = await getTimelineData()
+        setTimeline({ occurrences })
+        console.log(occurrences)
+      }
+    }
+    getTimeline()
   }, [])
 
   return (

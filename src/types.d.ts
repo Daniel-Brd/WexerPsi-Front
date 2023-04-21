@@ -31,3 +31,12 @@ type PatientType = {
   personalAnnotations: string
   patientId: string
 }
+
+type TimeLineType = {
+  patientId: string
+  occurrences: string
+  serviceName: string
+  timelineId: string
+  createdOn: string
+  modifiedOn: string
+}
