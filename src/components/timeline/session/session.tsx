@@ -1,34 +1,35 @@
-import { Dots, PushPinLine } from '@/assets/icons/db-icons'
+import { Dots, MentalHealthLine } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
-import * as S from './styled-material-fact'
+import * as S from './styled.session'
 
-type MaterialFactType = {
+type SessionType = {
+  title: string
   createdOn: string
   content: string
 }
 
-const MaterialFact = ({ createdOn, content }: MaterialFactType) => {
+const Session = ({ title, createdOn, content }: SessionType) => {
   return (
     <>
       <S.Icon>
-        <S.VerticalLine></S.VerticalLine>
-        <PushPinLine />
+        <S.VerticalLine />
+        <MentalHealthLine />
       </S.Icon>
       <Card>
         <HomeCard>
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
-            <h2>Fato relevante</h2>
+            <h2>{title}</h2>
             <button>
               <Dots />
             </button>
           </FlexRow>
           <small>{createdOn}</small>
-          <p>{content}</p>
+          <p>{content} </p>
         </HomeCard>
       </Card>
     </>
   )
 }
 
-export default MaterialFact
+export default Session

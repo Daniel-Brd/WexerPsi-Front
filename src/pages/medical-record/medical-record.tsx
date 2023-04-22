@@ -4,7 +4,7 @@ import PatientInfos from '../../components/patient-infos/patient-infos'
 import Notes from '../../components/notes/notes'
 import NewService from '../../components/new-service/new-service'
 import Assessment from '../../components/timeline/assessment/assessment'
-import { Section } from '@/components/patient-infos/styled-patient-infos'
+import Section from '@/components/timeline/session/session'
 import Attachment from '@/components/timeline/attachment/attachment'
 import MaterialFact from '@/components/timeline/material-fact/material-fact'
 import { useEffect, useState } from 'react'
@@ -13,7 +13,7 @@ import { getTimelineData } from '@/services/timeline'
 
 const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
-  const [timeLine, setTimeline] = useState<Partial<TimeLineType>>()
+  const [timeline, setTimeline] = useState<Partial<TimeLineType>>()
 
   useEffect(() => {
     const getPatient = async () => {
@@ -25,10 +25,9 @@ const MedicalRecord = () => {
     getPatient()
 
     const getTimeline = async () => {
-      if (!timeLine) {
+      if (!timeline) {
         const { occurrences } = await getTimelineData()
         setTimeline({ occurrences })
-        console.log(occurrences)
       }
     }
     getTimeline()
@@ -50,7 +49,20 @@ const MedicalRecord = () => {
         </S.LeftColumn>
         <S.RightColumn>
           <NewService />
-          <Section />
+          {timeline?.occurrences?.map((occurrence, index) => {
+            const { type, occurrenceId, title, createdOn, content, files } = occurrence
+            if (occurrence.type === 'session') {
+              return <Section key={index} title={title} content={content} createdOn={createdOn} />
+            } else if (occurrence.type === 'material-fact') {
+              return <MaterialFact key={index} createdOn={createdOn} content={content} />
+            } else if (occurrence.type === 'attachment') {
+              return (
+                <Attachment key={index} title={title} createdOn={createdOn} patientName={patient?.name} files={''} />
+              )
+            } else if (occurrence.type === 'assessment') {
+              return <Assessment key={index} />
+            }
+          })}
           <MaterialFact />
           <Attachment />
           <Assessment />

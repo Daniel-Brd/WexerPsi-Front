@@ -2,7 +2,14 @@ import { AttachmentTwo, Dots } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-attachment'
 
-const Attachment = () => {
+type AttachmentType = {
+  title: string
+  createdOn: string
+  patientName?: string
+  files: string
+}
+
+const Attachment = ({ title, createdOn, patientName, files }: AttachmentType) => {
   return (
     <>
       <S.Icon>
@@ -13,16 +20,17 @@ const Attachment = () => {
         <HomeCard>
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
-            <h2>Documentos Importantes</h2>
+            <h2>{title}</h2>
             <button>
               <Dots />
             </button>
           </FlexRow>
-          <small>22 de setembro de 2022</small>
+          <small>{createdOn}</small>
           <p>
-            Anexo hoje alguns documentos importantes sobre as consultas recentes da paciente Ana Ester Resende.
-            Documentos para serem consultados posteriormente, caso necessário.
+            Anexo hoje alguns documentos importantes sobre as consultas recentes da paciente {patientName}. Documentos
+            para serem consultados posteriormente, caso necessário.
           </p>
+          <div>{files}</div>
         </HomeCard>
       </Card>
     </>

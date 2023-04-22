@@ -32,9 +32,19 @@ type PatientType = {
   patientId: string
 }
 
+type OccurrenceType = {
+  occurrenceId: string
+  title: string
+  content: string
+  files: []
+  type: string
+  createdOn: string
+  modifiedOn: string
+}
+
 type TimeLineType = {
   patientId: string
-  occurrences: string
+  occurrences: OccurrenceType[]
   serviceName: string
   timelineId: string
   createdOn: string
