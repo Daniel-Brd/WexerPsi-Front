@@ -7,12 +7,6 @@ type FormHeaderType = {
   handleClose: () => void
 }
 
-type DateInputType = {
-  label: string
-  register: () => void
-  errorMessage: string
-}
-
 type FormFooterType = {
   buttonText: string
   handleCancel: () => void
@@ -65,7 +59,7 @@ export const DescriptionTextarea = ({ label, register, errorMessage }) => (
   <label>
     {label}
     <InputContainer>
-      <textarea {...register('description')}></textarea>
+      <textarea {...register('content')}></textarea>
     </InputContainer>
     <small>{errorMessage}</small>
   </label>

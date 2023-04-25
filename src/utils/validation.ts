@@ -16,7 +16,7 @@ const YUP_VALIDATION = {
   date: yup.date().required().typeError(INVALID_DATE).max(new Date(), MAX_DATE),
   time: yup.string().required(),
   title: yup.string().required(),
-  description: yup.string().required(),
+  content: yup.string().required(),
   value: yup.string().matches(/^\d+(\.\d{1,2})?$/, 'Formato de preço inválido')
 }
 

@@ -15,18 +15,17 @@ import {
 import { schema } from './schema'
 import * as FormStyle from '../form-components/styled-form-components'
 import { Modal, Card, Hr } from '@/assets/styles'
+import { postSession } from '@/services/occurrences'
 
 type SectionType = {
   number: number
   title: string
 }
 
-const defaultValues: DefaultValues<FormType> = {
+const defaultValues: DefaultValues<SessionType> = {
   date: '',
-  time: '',
   title: '',
-  description: '',
-  value: ''
+  content: ''
 }
 
 const SectionTitle = ({ number, title }: SectionType) => (
@@ -41,14 +40,21 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
     handleSubmit,
     register,
     formState: { errors, isValid, isValidating }
-  } = useForm<FormType>({
+  } = useForm<SessionType>({
     mode: 'onBlur',
     defaultValues,
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data: FormType) => {
-    console.log(data)
+  const onSubmit = (data: SessionType) => {
+    postSession({
+      date: data.date,
+      time: data.time,
+      title: data.title,
+      content: data.content,
+      timelineId: '64407e0bdafc988a50bd2602',
+      createdOn: new Date().toString()
+    })
   }
   return (
     <Modal>
@@ -65,7 +71,11 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
             <Hr />
             <SectionTitle number={2} title="Sessão" />
             <TitleInput sise={'big'} errorMessage={errors.title?.message} register={register} />
-            <DescriptionTextarea label={'Resumo da sessão*'} errorMessage={errors.title?.message} register={register} />
+            <DescriptionTextarea
+              label={'Resumo da sessão*'}
+              errorMessage={errors.content?.message}
+              register={register}
+            />
             <Hr />
             <SectionTitle number={3} title="Pagamento" />
             <FormStyle.Flex>

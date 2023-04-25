@@ -4,12 +4,15 @@ import PatientInfos from '../../components/patient-infos/patient-infos'
 import Notes from '../../components/notes/notes'
 import NewService from '../../components/new-service/new-service'
 import Assessment from '../../components/timeline/assessment/assessment'
-import Section from '@/components/timeline/session/session'
 import Attachment from '@/components/timeline/attachment/attachment'
 import MaterialFact from '@/components/timeline/material-fact/material-fact'
 import { useEffect, useState } from 'react'
 import { getPatientData } from '@/services/patient'
 import { getTimelineData } from '@/services/timeline'
+import format from 'date-fns/format'
+import ptBR from 'date-fns/locale/pt-BR'
+import { TIMELINE_ID } from '@/utils/constants'
+import Session from '@/components/timeline/session/session'
 
 const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
@@ -31,7 +34,7 @@ const MedicalRecord = () => {
       }
     }
     getTimeline()
-  }, [])
+  }, [timeline])
 
   return (
     <>
@@ -49,18 +52,43 @@ const MedicalRecord = () => {
         </S.LeftColumn>
         <S.RightColumn>
           <NewService />
-          {timeline?.occurrences?.map((occurrence, index) => {
-            const { type, occurrenceId, title, createdOn, content, files } = occurrence
-            if (occurrence.type === 'session') {
-              return <Section key={index} title={title} content={content} createdOn={createdOn} />
-            } else if (occurrence.type === 'material-fact') {
-              return <MaterialFact key={index} createdOn={createdOn} content={content} />
-            } else if (occurrence.type === 'attachment') {
+          {timeline?.occurrences?.reverse().map(occurrence => {
+            const { type, _id, title, createdOn, content, files } = occurrence
+
+            if (type === 'session') {
               return (
-                <Attachment key={index} title={title} createdOn={createdOn} patientName={patient?.name} files={''} />
+                <Session
+                  key={_id}
+                  title={title}
+                  content={content}
+                  createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                  occurrenceId={_id}
+                  timelineId={TIMELINE_ID}
+                  timeline={timeline}
+                  setTimeline={setTimeline}
+                />
               )
-            } else if (occurrence.type === 'assessment') {
-              return <Assessment key={index} />
+            } else if (type === 'material-fact') {
+              return (
+                <MaterialFact
+                  key={_id}
+                  title={title}
+                  createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                  content={content}
+                />
+              )
+            } else if (type === 'attachment') {
+              return (
+                <Attachment
+                  key={_id}
+                  title={title}
+                  createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                  patientName={patient?.name}
+                  files={''}
+                />
+              )
+            } else if (type === 'assessment') {
+              return <Assessment key={_id} />
             }
           })}
           <MaterialFact />

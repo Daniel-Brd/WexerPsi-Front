@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const SideBar = styled.nav`
   position: fixed;
+  z-index: 2;
   top: 80px;
   width: 80px;
   height: 100%;

@@ -1,6 +1,7 @@
 import { Dots, TodoLine } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-assessment'
+import { deleteOccurrence } from '@/services/occurrences'
 
 const Assessment = () => {
   return (

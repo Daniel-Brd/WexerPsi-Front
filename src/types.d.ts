@@ -33,7 +33,7 @@ type PatientType = {
 }
 
 type OccurrenceType = {
-  occurrenceId: string
+  _id: string
   title: string
   content: string
   files: []
@@ -46,7 +46,32 @@ type TimeLineType = {
   patientId: string
   occurrences: OccurrenceType[]
   serviceName: string
-  timelineId: string
+  _id: string
   createdOn: string
   modifiedOn: string
+}
+
+type SessionType = {
+  occurrenceId: string
+  timelineId: string
+  createdOn: string
+  title: string
+  content: string
+  date: string
+  time: string
+  timeline: Partial<TimeLineType>
+  setTimeline: Dispatch<SetStateAction<Partial<TimeLineType>>>
+  payment?: {
+    value: number
+    method: string
+    status: string
+  }
+}
+
+type MaterialFactType = {
+  timelineId?: string
+  createdOn: string
+  title: string
+  date: string
+  content: string
 }

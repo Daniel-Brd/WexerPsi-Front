@@ -13,7 +13,6 @@ function WexerPsi() {
       api.defaults.headers.Authorization = newToken
       localStorage.setItem('jwt', newToken)
     }
-    api.defaults.headers.Authorization = token
   }
 
   useEffect(() => {
