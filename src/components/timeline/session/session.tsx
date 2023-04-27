@@ -19,9 +19,9 @@ const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDe
             <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
           </FlexRow>
           <small>{createdOn}</small>
-          <p>{content} </p>
+          <S.Truncated>{content} </S.Truncated>
         </HomeCard>
-      </Card>
+      </Card> 
     </>
   )
 }

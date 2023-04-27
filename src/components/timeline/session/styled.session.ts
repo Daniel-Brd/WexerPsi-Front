@@ -37,3 +37,10 @@ export const SideBar = styled.div`
   background-color: var(--main-green);
   border-radius: 4px 0px 0px 4px;
 `
+export const Truncated = styled.p`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+`
