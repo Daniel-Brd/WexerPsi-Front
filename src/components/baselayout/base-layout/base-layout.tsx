@@ -7,21 +7,15 @@ import { useState } from 'react'
 const BaseLayout = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
-  const openSidebar = () => {
-    setIsExpanded(true)
-  }
-  const closeSidebar = () => {
-    setIsExpanded(false)
-  }
   const toggleSidebar = () => {
-    !isExpanded ? openSidebar() : closeSidebar()
+    !isExpanded ? setIsExpanded(true) : setIsExpanded(false)
   }
 
   return (
     <>
       <BaseHeader handleClick={toggleSidebar} />
       <S.Flex>
-        <div onMouseEnter={openSidebar} onMouseLeave={closeSidebar}>
+        <div onMouseEnter={()=>setIsExpanded(true)} onMouseLeave={()=>setIsExpanded(false)}>
           <BaseSidebar isExpanded={isExpanded} />
         </div>
         <S.MainContainer>

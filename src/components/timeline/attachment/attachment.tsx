@@ -1,9 +1,11 @@
-import { AttachmentTwo, Dots } from '@/assets/icons/db-icons'
+import { AttachmentTwo } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-attachment'
 import pdfIcon from '@/assets/icons/pdf-files-icon 1.png'
+import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
 
-const Attachment = ({ title, createdOn, content, files }: AttachmentType) => {
+const Attachment = ({ title, createdOn, content, files, occurrenceId, timelineId, handleDelete }: AttachmentType) => {
+
   return (
     <>
       <S.Icon>
@@ -15,9 +17,7 @@ const Attachment = ({ title, createdOn, content, files }: AttachmentType) => {
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
             <h2>{title}</h2>
-            <button>
-              <Dots />
-            </button>
+            <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
           </FlexRow>
           <small>{createdOn}</small>
           <p>{content} </p>

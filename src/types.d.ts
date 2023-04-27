@@ -59,21 +59,22 @@ type SessionType = {
   content: string
   date?: string
   time?: string
-  timeline: Partial<TimeLineType>
-  setTimeline: Dispatch<SetStateAction<Partial<TimeLineType>>>
   payment?: {
     value: number
     method: string
     status: string
   }
+  handleDelete: (timelineId: string, occurrenceId: string) => void
 }
 
 type RelevantFactType = {
-  timelineId?: string
+  occurrenceId: string
+  timelineId: string
   createdOn: string
   title: string
-  date: string
+  date?: string
   content: string
+  handleDelete: (timelineId: string, occurrenceId: string) => void
 }
 
 type FileType = {
@@ -83,10 +84,12 @@ type FileType = {
 }
 
 type AttachmentType = {
-  timelineId?: string
+  occurrenceId: string
+  timelineId: string
   createdOn: string
   title: string
   date?: string
   content: string
   files: { filename: string; filesize: number }[]
+  handleDelete: (timelineId: string, occurrenceId: string) => void
 }

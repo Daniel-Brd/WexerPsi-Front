@@ -11,7 +11,7 @@ export const deleteOccurrence = async ({ timelineId, occurrenceId }: { timelineI
   }
 }
 
-export const postSession = async ({ timelineId, title, content }: SessionType) => {
+export const postSession = async ({ timelineId, title, content }: Partial<SessionType>) => {
   try {
     const result = await api.post(
       '/occurrence',
@@ -30,7 +30,7 @@ export const postSession = async ({ timelineId, title, content }: SessionType) =
   }
 }
 
-export const postRelevantFact = async ({ timelineId, title, content }: RelevantFactType) => {
+export const postRelevantFact = async ({ timelineId, title, content }: Partial<RelevantFactType>) => {
   try {
     const result = await api.post(
       '/occurrence',
@@ -50,7 +50,7 @@ export const postRelevantFact = async ({ timelineId, title, content }: RelevantF
   }
 }
 
-export const postAttachment = async ({ timelineId, title, content, files }: AttachmentType) => {
+export const postAttachment = async ({ timelineId, title, content, files }: Partial<AttachmentType>) => {
   try {
     const result = await api.post(
       'occurrence',

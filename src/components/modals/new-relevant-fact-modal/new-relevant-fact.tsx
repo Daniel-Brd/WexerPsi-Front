@@ -5,6 +5,7 @@ import { schema } from './schema'
 import { DateInput, DescriptionTextarea, FormFooter, FormHeader, TitleInput } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
 import { postRelevantFact } from '@/services/occurrences'
+import { TIMELINE_ID } from '@/utils/constants'
 
 const defaultValues: DefaultValues<RelevantFactType> = {
   timelineId: '',
@@ -25,14 +26,15 @@ const NewRelevantFactModal = ({ handleClose }: ModalType) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data: RelevantFactType) => {
-    postRelevantFact({
+  const onSubmit = async (data: Partial<RelevantFactType>) => {
+    await postRelevantFact({
       date: data.date,
-      title: data.title,
-      content: data.content,
-      timelineId: '64407e0bdafc988a50bd2602',
+      title: data.title as string,
+      content: data.content as string,
+      timelineId: TIMELINE_ID,
       createdOn: new Date().toString()
     })
+    location.reload()
   }
   return (
     <Modal>
@@ -41,7 +43,7 @@ const NewRelevantFactModal = ({ handleClose }: ModalType) => {
           <FormStyle.Form onSubmit={handleSubmit(onSubmit)} noValidate>
             <FormHeader title="Novo Fato Relevante" handleClose={handleClose} />
             <FormStyle.Flex>
-              <DateInput label={'Data*'} register={register} errorMessage={errors.date?.message} />{' '}
+              <DateInput label={'Data*'} register={register} errorMessage={errors.date?.message} />
               <TitleInput sise={'medium'} register={register} errorMessage={errors.title?.message} />
             </FormStyle.Flex>
             <DescriptionTextarea label={'Descrição*'} register={register} errorMessage={errors.content?.message} />

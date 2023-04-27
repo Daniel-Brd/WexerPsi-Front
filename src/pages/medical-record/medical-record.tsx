@@ -13,6 +13,7 @@ import format from 'date-fns/format'
 import ptBR from 'date-fns/locale/pt-BR'
 import { TIMELINE_ID } from '@/utils/constants'
 import Session from '@/components/timeline/session/session'
+import { deleteOccurrence } from '@/services/occurrences'
 
 const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
@@ -36,6 +37,14 @@ const MedicalRecord = () => {
     getTimeline()
   }, [timeline])
 
+  const handleDelete = (timelineId: string, occurrenceId: string) => {
+    deleteOccurrence({ timelineId, occurrenceId })
+    if (timeline?.occurrences?.length) {
+      const newOccurrences = timeline?.occurrences.filter(item => item._id !== occurrenceId)
+      setTimeline({ occurrences: newOccurrences })
+    }
+  }
+
   return (
     <>
       <MedicalRecordHeader />
@@ -52,9 +61,8 @@ const MedicalRecord = () => {
         </S.LeftColumn>
         <S.RightColumn>
           <NewService />
-          {timeline?.occurrences?.reverse().map(occurrence => {
+          {timeline?.occurrences?.slice().reverse().map(occurrence => {
             const { type, _id, title, createdOn, content, files } = occurrence
-
             if (type === 'session') {
               return (
                 <Session
@@ -64,8 +72,7 @@ const MedicalRecord = () => {
                   createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                   occurrenceId={_id}
                   timelineId={TIMELINE_ID}
-                  timeline={timeline}
-                  setTimeline={setTimeline}
+                  handleDelete={handleDelete}
                 />
               )
             } else if (type === 'relevant_fact') {
@@ -75,6 +82,9 @@ const MedicalRecord = () => {
                   title={title}
                   createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                   content={content}
+                  handleDelete={handleDelete}
+                  occurrenceId={_id}
+                  timelineId={TIMELINE_ID}
                 />
               )
             } else if (type === 'attachment') {
@@ -85,6 +95,9 @@ const MedicalRecord = () => {
                   createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                   files={files}
                   content={content}
+                  occurrenceId={_id}
+                  timelineId={TIMELINE_ID}
+                  handleDelete={handleDelete}
                 />
               )
             } else if (type === 'assessment') {

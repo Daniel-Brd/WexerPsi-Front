@@ -1,17 +1,21 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  right: 48px;
-  top: 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  position: absolute;
+  right: 0;
+  top: 30px;
   font-size: 16px;
   font-weight: 400;
   line-height: 27px;
+
+  div{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 `
 
-export const EditButton = styled.div`
+export const EditButton = styled.button`
   color: var(--sistem-blue);
   display: flex;
   align-items: center;

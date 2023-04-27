@@ -1,14 +1,12 @@
-import { Dots, PushPinLine } from '@/assets/icons/db-icons'
+import { PushPinLine } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-relevant-fact'
+import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
 
-type RelevantFactType = {
-  title: string
-  createdOn: string
-  content: string
-}
 
-const RelevantFact = ({ title, createdOn, content }: RelevantFactType) => {
+
+const RelevantFact = ({ title, createdOn, content, occurrenceId, timelineId, handleDelete }: RelevantFactType) => {
+
   return (
     <>
       <S.Icon>
@@ -20,9 +18,7 @@ const RelevantFact = ({ title, createdOn, content }: RelevantFactType) => {
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
             <h2>{title}</h2>
-            <button>
-              <Dots />
-            </button>
+            <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
           </FlexRow>
           <small>{createdOn}</small>
           <p>{content}</p>

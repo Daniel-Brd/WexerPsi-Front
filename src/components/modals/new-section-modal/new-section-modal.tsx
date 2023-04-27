@@ -16,6 +16,7 @@ import { schema } from './schema'
 import * as FormStyle from '../form-components/styled-form-components'
 import { Modal, Card, Hr } from '@/assets/styles'
 import { postSession } from '@/services/occurrences'
+import { TIMELINE_ID } from '@/utils/constants'
 
 type SectionType = {
   number: number
@@ -46,15 +47,17 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data: SessionType) => {
-    postSession({
+  const onSubmit = async (data: SessionType) => {
+    await postSession({
       date: data.date,
       time: data.time,
       title: data.title,
       content: data.content,
-      timelineId: '64407e0bdafc988a50bd2602',
+      timelineId: TIMELINE_ID,
       createdOn: new Date().toString()
     })
+
+    location.reload()
   }
   return (
     <Modal>
@@ -79,7 +82,7 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
             <Hr />
             <SectionTitle number={3} title="Pagamento" />
             <FormStyle.Flex>
-              <ValueInput errorMessage={errors.value?.message} register={register} />
+              <ValueInput errorMessage={errors.payment?.value?.message} register={register} />
               <Select label={'Forma de pagamento'}>
                 <option>PIX</option>
               </Select>
