@@ -5,7 +5,7 @@ import Notes from '../../components/notes/notes'
 import NewService from '../../components/new-service/new-service'
 import Assessment from '../../components/timeline/assessment/assessment'
 import Attachment from '@/components/timeline/attachment/attachment'
-import MaterialFact from '@/components/timeline/material-fact/material-fact'
+import RelevantFact from '@/components/timeline/relevant-fact/relevant-fact'
 import { useEffect, useState } from 'react'
 import { getPatientData } from '@/services/patient'
 import { getTimelineData } from '@/services/timeline'
@@ -68,9 +68,9 @@ const MedicalRecord = () => {
                   setTimeline={setTimeline}
                 />
               )
-            } else if (type === 'material-fact') {
+            } else if (type === 'relevant_fact') {
               return (
-                <MaterialFact
+                <RelevantFact
                   key={_id}
                   title={title}
                   createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
@@ -83,16 +83,15 @@ const MedicalRecord = () => {
                   key={_id}
                   title={title}
                   createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
-                  patientName={patient?.name}
-                  files={''}
+                  files={files}
+                  content={content}
                 />
               )
             } else if (type === 'assessment') {
               return <Assessment key={_id} />
             }
           })}
-          <MaterialFact />
-          <Attachment />
+          {/* <Attachment /> */}
           <Assessment />
         </S.RightColumn>
       </S.Grid>

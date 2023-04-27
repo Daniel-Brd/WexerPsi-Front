@@ -17,7 +17,8 @@ const YUP_VALIDATION = {
   time: yup.string().required(),
   title: yup.string().required(),
   content: yup.string().required(),
-  value: yup.string().matches(/^\d+(\.\d{1,2})?$/, 'Formato de preço inválido')
+  value: yup.string().matches(/^\d+(\.\d{1,2})?$/, 'Formato de preço inválido'),
+  files: yup.mixed()
 }
 
 export default YUP_VALIDATION

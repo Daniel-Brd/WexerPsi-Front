@@ -18,8 +18,9 @@ export const Form = styled.form`
     flex-direction: column;
     gap: 3px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     padding-bottom: 16px;
+    padding-top: 16px;
   }
 
   input.small {

@@ -4,5 +4,6 @@ import * as yup from 'yup'
 export const schema = yup.object().shape({
   date: YUP_VALIDATION.date,
   title: YUP_VALIDATION.title,
-  description: YUP_VALIDATION.description
+  content: YUP_VALIDATION.content,
+  files: YUP_VALIDATION.files
 })

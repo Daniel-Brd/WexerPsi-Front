@@ -25,9 +25,8 @@ const NewAssessmentModal = ({ handleClose }: ModalType) => {
 
   const navigate = useNavigate()
 
-  const onSubmit = (data: FormType) => {
-    console.log(data)
-    navigate('/assessment')
+  const onSubmit = () => {
+    navigate('/assessment/interview')
   }
 
   return (

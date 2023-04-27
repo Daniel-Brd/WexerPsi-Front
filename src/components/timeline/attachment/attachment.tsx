@@ -1,15 +1,9 @@
 import { AttachmentTwo, Dots } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-attachment'
+import pdfIcon from '@/assets/icons/pdf-files-icon 1.png'
 
-type AttachmentType = {
-  title: string
-  createdOn: string
-  patientName?: string
-  files: string
-}
-
-const Attachment = ({ title, createdOn, patientName, files }: AttachmentType) => {
+const Attachment = ({ title, createdOn, content, files }: AttachmentType) => {
   return (
     <>
       <S.Icon>
@@ -26,11 +20,23 @@ const Attachment = ({ title, createdOn, patientName, files }: AttachmentType) =>
             </button>
           </FlexRow>
           <small>{createdOn}</small>
-          <p>
-            Anexo hoje alguns documentos importantes sobre as consultas recentes da paciente {patientName}. Documentos
-            para serem consultados posteriormente, caso necessário.
-          </p>
-          <div>{files}</div>
+          <p>{content} </p>
+          <br />
+          <small>
+            <b>
+              {files.length.toLocaleString()} {files.length > 1 ? 'anexos' : 'anexo'}
+            </b>
+          </small>
+          {files.map((file, index) => {
+            return (
+              <S.AttachmentContainer key={index}>
+                <img src={pdfIcon} alt="" />
+                <S.Link href="">
+                  {file.filename} ({file.filesize + ' Kb'})
+                </S.Link>
+              </S.AttachmentContainer>
+            )
+          })}
         </HomeCard>
       </Card>
     </>

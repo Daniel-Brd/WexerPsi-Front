@@ -11,11 +11,13 @@ import {
   TitleInput
 } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
+import { postAttachment } from '@/services/occurrences'
 
-const defaultValues: DefaultValues<FormType> = {
+const defaultValues: DefaultValues<AttachmentType> = {
   date: '',
   title: '',
-  description: ''
+  content: '',
+  files: []
 }
 
 const NewAttachmentModal = ({ handleClose }: ModalType) => {
@@ -23,14 +25,27 @@ const NewAttachmentModal = ({ handleClose }: ModalType) => {
     handleSubmit,
     register,
     formState: { errors, isValid, isValidating }
-  } = useForm<FormType>({
+  } = useForm<AttachmentType>({
     mode: 'onBlur',
     defaultValues,
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data: FormType) => {
-    console.log(data)
+  const onSubmit = (data: AttachmentType) => {
+    const files = Object.values(data.files) as unknown as FileType[]
+
+    const formatedFiles = files.map(file => {
+      return { filename: file.name, filesize: file.size }
+    })
+
+    postAttachment({
+      date: data.date,
+      title: data.title,
+      content: data.content,
+      timelineId: '64407e0bdafc988a50bd2602',
+      createdOn: new Date().toString(),
+      files: formatedFiles
+    })
   }
 
   return (
@@ -43,8 +58,8 @@ const NewAttachmentModal = ({ handleClose }: ModalType) => {
               <DateInput label={'Data*'} register={register} errorMessage={errors.date?.message} />{' '}
               <TitleInput sise={'medium'} register={register} errorMessage={errors.title?.message} />
             </FormStyle.Flex>
-            <DescriptionTextarea label={'Descrição*'} register={register} errorMessage={errors.description?.message} />
-            <AttachmentInput label={'Anexar arquivos*'} />
+            <DescriptionTextarea label={'Descrição*'} register={register} errorMessage={errors.content?.message} />
+            <AttachmentInput label={'Anexar arquivos*'} register={register} errorMessage={errors.files?.message} />
             <FormFooter buttonText="Criar" handleCancel={handleClose} isValid={isValid} isValidating={isValidating} />
           </FormStyle.Form>
         </Card>

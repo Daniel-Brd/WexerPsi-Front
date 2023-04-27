@@ -36,3 +36,15 @@ export const SideBar = styled.div`
   background-color: var(--sistem-purple);
   border-radius: 4px 0px 0px 4px;
 `
+export const Link = styled.a`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--sistem-blue);
+`
+export const AttachmentContainer = styled.div`
+  margin-top: 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+`

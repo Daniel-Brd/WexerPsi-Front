@@ -71,5 +71,5 @@ export const HomeCard = styled.article`
 export const FlexRow = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 `

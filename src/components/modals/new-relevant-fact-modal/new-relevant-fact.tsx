@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import { DateInput, DescriptionTextarea, FormFooter, FormHeader, TitleInput } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
-import { postMaterialFact } from '@/services/occurrences'
+import { postRelevantFact } from '@/services/occurrences'
 
-const defaultValues: DefaultValues<MaterialFactType> = {
+const defaultValues: DefaultValues<RelevantFactType> = {
   timelineId: '',
   createdOn: '',
   date: '',
@@ -14,19 +14,19 @@ const defaultValues: DefaultValues<MaterialFactType> = {
   title: ''
 }
 
-const NewMaterialFactModal = ({ handleClose }: ModalType) => {
+const NewRelevantFactModal = ({ handleClose }: ModalType) => {
   const {
     handleSubmit,
     register,
     formState: { errors, isValid, isValidating }
-  } = useForm<MaterialFactType>({
+  } = useForm<RelevantFactType>({
     mode: 'onBlur',
     defaultValues,
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data: MaterialFactType) => {
-    postMaterialFact({
+  const onSubmit = (data: RelevantFactType) => {
+    postRelevantFact({
       date: data.date,
       title: data.title,
       content: data.content,
@@ -52,4 +52,4 @@ const NewMaterialFactModal = ({ handleClose }: ModalType) => {
     </Modal>
   )
 }
-export default NewMaterialFactModal
+export default NewRelevantFactModal

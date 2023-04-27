@@ -4,28 +4,22 @@ export const SideBar = styled.nav`
   position: fixed;
   z-index: 2;
   top: 80px;
-  width: 80px;
+  min-width: 80px;
+  width: fit-content;
   height: 100%;
   background-color: var(--main-green);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: 37.5px;
-  padding: 28px 0px;
+  padding: 28px;
   color: var(--white);
-
-  &:hover {
-    width: 263px;
-    padding-left: 28px;
-    display: flex;
-
-    align-items: start;
-  }
 
   > div {
     gap: 18px;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   svg {

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  position: absolute;
   right: 48px;
   top: 48px;
   display: flex;

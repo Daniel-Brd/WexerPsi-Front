@@ -57,8 +57,8 @@ type SessionType = {
   createdOn: string
   title: string
   content: string
-  date: string
-  time: string
+  date?: string
+  time?: string
   timeline: Partial<TimeLineType>
   setTimeline: Dispatch<SetStateAction<Partial<TimeLineType>>>
   payment?: {
@@ -68,10 +68,25 @@ type SessionType = {
   }
 }
 
-type MaterialFactType = {
+type RelevantFactType = {
   timelineId?: string
   createdOn: string
   title: string
   date: string
   content: string
+}
+
+type FileType = {
+  name: string
+  size: number
+  type: string
+}
+
+type AttachmentType = {
+  timelineId?: string
+  createdOn: string
+  title: string
+  date?: string
+  content: string
+  files: { filename: string; filesize: number }[]
 }

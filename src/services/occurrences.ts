@@ -14,7 +14,7 @@ export const deleteOccurrence = async ({ timelineId, occurrenceId }: { timelineI
 export const postSession = async ({ timelineId, title, content }: SessionType) => {
   try {
     const result = await api.post(
-      `/occurrence`,
+      '/occurrence',
       {
         type: 'session',
         timelineId: `${timelineId}`,
@@ -30,19 +30,36 @@ export const postSession = async ({ timelineId, title, content }: SessionType) =
   }
 }
 
-export const postMaterialFact = async ({ timelineId, title, content }: MaterialFactType) => {
-  console.log(timelineId)
-  console.log(title)
-  console.log(content)
-
+export const postRelevantFact = async ({ timelineId, title, content }: RelevantFactType) => {
   try {
     const result = await api.post(
-      `/occurrence`,
+      '/occurrence',
       {
-        type: 'material-fact',
+        type: 'relevant_fact',
         timelineId: `${timelineId}`,
         title: `${title}`,
         content: `${content}`
+      },
+      { headers: { Authorization: token } }
+    )
+
+    return result.data
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error)
+  }
+}
+
+export const postAttachment = async ({ timelineId, title, content, files }: AttachmentType) => {
+  try {
+    const result = await api.post(
+      'occurrence',
+      {
+        type: 'attachment',
+        timelineId: `${timelineId}`,
+        title: `${title}`,
+        content: `${content}`,
+        files: files
       },
       { headers: { Authorization: token } }
     )

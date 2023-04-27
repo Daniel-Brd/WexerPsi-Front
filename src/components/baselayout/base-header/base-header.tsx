@@ -1,10 +1,10 @@
 import * as S from './styled-base-header'
-import * as Icon from '../../../assets/icons/db-icons'
 import WexerLogo from '@/assets/logo'
 import { useEffect, useState } from 'react'
 import { getUserData } from '@/services/user'
+import { Menu } from '@/assets/icons/db-icons'
 
-const BaseHeader = () => {
+const BaseHeader = ({ handleClick }: { handleClick: () => void }) => {
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
@@ -23,7 +23,9 @@ const BaseHeader = () => {
         <WexerLogo />
       </S.WexerLogo>
       <S.HeaderContent>
-        <Icon.Menu />
+        <button onClick={handleClick}>
+          <Menu />
+        </button>
         <S.Title>
           Bem vindo(a), <S.UserName>{userName}</S.UserName>
         </S.Title>

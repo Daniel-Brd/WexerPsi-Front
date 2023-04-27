@@ -1,14 +1,14 @@
 import { Dots, PushPinLine } from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
-import * as S from './styled-material-fact'
+import * as S from './styled-relevant-fact'
 
-type MaterialFactType = {
+type RelevantFactType = {
   title: string
   createdOn: string
   content: string
 }
 
-const MaterialFact = ({ title, createdOn, content }: MaterialFactType) => {
+const RelevantFact = ({ title, createdOn, content }: RelevantFactType) => {
   return (
     <>
       <S.Icon>
@@ -32,4 +32,4 @@ const MaterialFact = ({ title, createdOn, content }: MaterialFactType) => {
   )
 }
 
-export default MaterialFact
+export default RelevantFact

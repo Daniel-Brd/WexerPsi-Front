@@ -1,21 +1,10 @@
 import * as S from './styled-base-sidebar'
 import * as Icon from '../../../assets/icons/db-icons'
-import { useState } from 'react'
 
-const BaseSidebar = () => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false)
-
-  const handleMouseEnter = () => {
-    setIsExpanded(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsExpanded(false)
-  }
-
+const BaseSidebar = ({ isExpanded }: { isExpanded: boolean }) => {
   return (
     <>
-      <S.SideBar onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <S.SideBar>
         <div>
           <Icon.People />
           {isExpanded && <div>Meus Pacientes</div>}
