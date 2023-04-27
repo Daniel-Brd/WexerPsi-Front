@@ -4,7 +4,6 @@ type ModalType = {
 
 type SmallIconButtonType = {
   icon: ReactNode
-  onClick: () => void
 }
 
 type FormType = {

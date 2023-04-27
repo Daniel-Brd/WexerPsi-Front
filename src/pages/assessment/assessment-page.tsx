@@ -1,5 +1,5 @@
-import { ArrowIosLeft, CheckmarkCircle } from '@/assets/icons/db-icons'
-import { FirstStep, SecondStep, ThirdStep } from '../assessment components/assessment-steps'
+import * as I from '@/assets/icons/db-icons'
+import { FirstStep, SecondStep, ThirdStep } from '../../components/assessment-steps/assessment-steps'
 import * as S from './styled-assessment-page'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -21,7 +21,7 @@ const AssessmentPage = ({ date }: { date: string }) => {
     <S.Main>
       <S.NavHeader>
         <button onClick={() => handleBack()}>
-          <ArrowIosLeft />
+          <I.ArrowIosLeft />
           Voltar
         </button>
         <div> | </div>
@@ -40,23 +40,23 @@ const AssessmentPage = ({ date }: { date: string }) => {
             <S.Step className="active">
               <FirstStep />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Entrevista Psicológica
               </p>
             </S.Step>
             <S.Step className="">
               <SecondStep />
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Aplicação de teste
               </p>
             </S.Step>
             <S.Step className="">
               <ThirdStep />
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Observação Comportamental
               </p>
             </S.Step>
@@ -66,23 +66,23 @@ const AssessmentPage = ({ date }: { date: string }) => {
             <S.Step className="completed">
               <FirstStep />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Entrevista Psicológica
               </p>
             </S.Step>
             <S.Step className="active">
               <SecondStep />
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Aplicação de teste
               </p>
             </S.Step>
             <S.Step className="">
               <ThirdStep />
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Observação Comportamental
               </p>
             </S.Step>
@@ -92,23 +92,23 @@ const AssessmentPage = ({ date }: { date: string }) => {
             <S.Step className="completed">
               <FirstStep />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Entrevista Psicológica
               </p>
             </S.Step>
             <S.Step className="completed">
               <SecondStep />
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Aplicação de teste
               </p>
             </S.Step>
             <S.Step className="active">
               <ThirdStep />
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               <p>
-                <CheckmarkCircle />
+                <I.CheckmarkCircle />
                 Observação Comportamental
               </p>
             </S.Step>

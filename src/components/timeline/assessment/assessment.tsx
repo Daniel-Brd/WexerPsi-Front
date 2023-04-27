@@ -1,4 +1,4 @@
-import { CheckmarkCircle, Dots, EyeLine, PencilLine, TodoLine } from '@/assets/icons/db-icons'
+import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-assessment'
 import SmallGreenButton from '@/components/small-green-button/small-green-button'
@@ -8,7 +8,7 @@ const Assessment = () => {
     <>
       <S.Icon>
         <S.VerticalLine></S.VerticalLine>
-        <TodoLine />
+        <I.TodoLine />
       </S.Icon>
       <Card>
         <HomeCard>
@@ -16,7 +16,7 @@ const Assessment = () => {
           <FlexRow>
             <h2>Avaliação psicológica</h2>
             <button>
-              <Dots />
+              <I.Dots />
             </button>
           </FlexRow>
           <small>22 de setembro de 2022</small>
@@ -25,42 +25,42 @@ const Assessment = () => {
               Entrevista Psicológica
               <S.ButtonsContainer>
                 <S.Done className="checked">Realizado</S.Done>
-                <SmallGreenButton icon={<PencilLine />} />
-                <SmallGreenButton icon={<EyeLine />} />
+                <SmallGreenButton icon={<I.PencilLine />} />
+                <SmallGreenButton icon={<I.EyeLine />} />
               </S.ButtonsContainer>
             </S.Item>
             <S.Item>
               Aplicação de teste{' '}
               <S.ButtonsContainer>
                 <S.Done className="checked">Realizado</S.Done>
-                <SmallGreenButton icon={<PencilLine />} />
-                <SmallGreenButton icon={<EyeLine />} />
+                <SmallGreenButton icon={<I.PencilLine />} />
+                <SmallGreenButton icon={<I.EyeLine />} />
               </S.ButtonsContainer>
             </S.Item>
             <S.Item className="last">
               Observação Comportamental{' '}
               <S.ButtonsContainer>
                 <S.Done className="checked">Realizado</S.Done>
-                <SmallGreenButton icon={<PencilLine />} />
-                <SmallGreenButton icon={<EyeLine />} />
+                <SmallGreenButton icon={<I.PencilLine />} />
+                <SmallGreenButton icon={<I.EyeLine />} />
               </S.ButtonsContainer>
             </S.Item>
           </S.ItemsContainer>
           <small>Emitir</small>
           <S.CheckContainer>
             <S.Check className="checked">
-              <CheckmarkCircle /> Laudo
+              <I.CheckmarkCircle /> Laudo
             </S.Check>
             <S.Check>
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               Atestado
             </S.Check>
             <S.Check>
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               Relatório
             </S.Check>
             <S.Check>
-              <CheckmarkCircle />
+              <I.CheckmarkCircle />
               Declaração
             </S.Check>
           </S.CheckContainer>

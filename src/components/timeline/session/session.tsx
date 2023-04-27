@@ -1,4 +1,4 @@
-import { MentalHealthLine } from '@/assets/icons/db-icons'
+import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled.session'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
@@ -9,7 +9,7 @@ const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDe
     <>
       <S.Icon>
         <S.VerticalLine />
-        <MentalHealthLine />
+        <I.MentalHealthLine />
       </S.Icon>
       <Card>
         <HomeCard>

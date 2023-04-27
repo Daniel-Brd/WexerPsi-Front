@@ -18,10 +18,6 @@ import { Modal, Card, Hr } from '@/assets/styles'
 import { postSession } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
-type SectionType = {
-  number: number
-  title: string
-}
 
 const defaultValues: DefaultValues<SessionType> = {
   date: '',
@@ -29,14 +25,14 @@ const defaultValues: DefaultValues<SessionType> = {
   content: ''
 }
 
-const SectionTitle = ({ number, title }: SectionType) => (
-  <FormStyle.SectionTitle>
+const SessionTitle = ({ number, title }: {number:number, title: string}) => (
+  <FormStyle.SessionTitle>
     <FormStyle.Circle>{number}</FormStyle.Circle>
     <h2>{title}</h2>
-  </FormStyle.SectionTitle>
+  </FormStyle.SessionTitle>
 )
 
-const NewSectionModal = ({ handleClose }: ModalType) => {
+const NewSessionModal = ({ handleClose }: ModalType) => {
   const {
     handleSubmit,
     register,
@@ -65,14 +61,14 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
         <Card>
           <FormStyle.Form onSubmit={handleSubmit(onSubmit)} style={{ paddingRight: '24px' }}>
             <FormHeader title="Nova Sessão" handleClose={handleClose} />
-            <SectionTitle number={1} title="Dados Gerais" />
+            <SessionTitle number={1} title="Dados Gerais" />
             <FormStyle.Flex>
               <DateInput label={'data*'} errorMessage={errors.date?.message} register={register} />
               <TimeInput label={'Hora de inicio*'} errorMessage={errors.time?.message} register={register} />
               <TimeInput label={'Hora fim*'} errorMessage={errors.time?.message} register={register} />
             </FormStyle.Flex>
             <Hr />
-            <SectionTitle number={2} title="Sessão" />
+            <SessionTitle number={2} title="Sessão" />
             <TitleInput sise={'big'} errorMessage={errors.title?.message} register={register} />
             <DescriptionTextarea
               label={'Resumo da sessão*'}
@@ -80,7 +76,7 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
               register={register}
             />
             <Hr />
-            <SectionTitle number={3} title="Pagamento" />
+            <SessionTitle number={3} title="Pagamento" />
             <FormStyle.Flex>
               <ValueInput errorMessage={errors.payment?.value?.message} register={register} />
               <Select label={'Forma de pagamento'}>
@@ -101,4 +97,4 @@ const NewSectionModal = ({ handleClose }: ModalType) => {
   )
 }
 
-export default NewSectionModal
+export default NewSessionModal

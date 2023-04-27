@@ -1,24 +1,24 @@
 import * as S from './styled-base-sidebar'
-import * as Icon from '../../../assets/icons/db-icons'
+import * as I from '../../../assets/icons/db-icons'
 
 const BaseSidebar = ({ isExpanded }: { isExpanded: boolean }) => {
   return (
     <>
       <S.SideBar>
         <div>
-          <Icon.People />
+          <I.People />
           {isExpanded && <div>Meus Pacientes</div>}
         </div>
         <div>
-          <Icon.Menu />
+          <I.Menu />
           {isExpanded && <div>Modelos</div>}
         </div>
         <div>
-          <Icon.AddCricleFill />
+          <I.AddCricleFill />
           {isExpanded && <div>Cadastros</div>}
         </div>
         <div>
-          <Icon.SettingsTwo />
+          <I.SettingsTwo />
           {isExpanded && <div>Preferências</div>}
         </div>
       </S.SideBar>

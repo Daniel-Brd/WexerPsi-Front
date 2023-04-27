@@ -1,4 +1,4 @@
-import { AttachmentTwo } from '@/assets/icons/db-icons'
+import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-attachment'
 import pdfIcon from '@/assets/icons/pdf-files-icon 1.png'
@@ -10,7 +10,7 @@ const Attachment = ({ title, createdOn, content, files, occurrenceId, timelineId
     <>
       <S.Icon>
         <S.VerticalLine></S.VerticalLine>
-        <AttachmentTwo />
+        <I.AttachmentTwo />
       </S.Icon>
       <Card>
         <HomeCard>

@@ -1,4 +1,4 @@
-import { DeleteBinLine, Dots, ExternalLinkLine, PencilLine } from '@/assets/icons/db-icons'
+import * as I from '@/assets/icons/db-icons'
 import { Card } from '@/assets/styles'
 import * as S from './styled-occurrence-options'
 import { useState } from 'react'
@@ -17,22 +17,22 @@ export const OccurrenceOptions = ({ handleDelete }: OccurrenceOptionsType) => {
 
   return (<>
       <button onClick={()=>toggleOption()}>
-        <Dots />
+        <I.Dots />
       </button >
       {isOptionOpen &&     
         <S.Container>
           <Card>
             <div>
             <S.EditButton>
-              <PencilLine />
+              <I.PencilLine />
               Editar
             </S.EditButton>
             <S.DeleteButton onClick={() => handleDelete()}>
-              <DeleteBinLine />
+              <I.DeleteBinLine />
               Excluir
             </S.DeleteButton>
             <S.ExportButton>
-              <ExternalLinkLine />
+              <I.ExternalLinkLine />
               Exportar
             </S.ExportButton>
             </div>

@@ -1,5 +1,5 @@
 import SmallIconButton from '../small-green-button/small-green-button'
-import * as Icon from '../../assets/icons/db-icons'
+import * as I from '../../assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 
 const Notes = () => {
@@ -8,7 +8,7 @@ const Notes = () => {
       <HomeCard>
         <FlexRow>
           <h2>Demandas e objetivos</h2>
-          <SmallIconButton icon={<Icon.EditTwoLine />} />
+          <SmallIconButton icon={<I.EditTwoLine />} />
         </FlexRow>
         <p>
           No dia 12 de fevereiro de 2015, a paciente B. A. V, 40 anos, solteira e residente na cidade de Manaus,

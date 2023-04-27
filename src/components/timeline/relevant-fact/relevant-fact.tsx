@@ -1,4 +1,4 @@
-import { PushPinLine } from '@/assets/icons/db-icons'
+import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-relevant-fact'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
@@ -11,7 +11,7 @@ const RelevantFact = ({ title, createdOn, content, occurrenceId, timelineId, han
     <>
       <S.Icon>
         <S.VerticalLine></S.VerticalLine>
-        <PushPinLine />
+        <I.PushPinLine />
       </S.Icon>
       <Card>
         <HomeCard>

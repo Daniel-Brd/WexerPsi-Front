@@ -1,10 +1,10 @@
 import * as S from './styled-new-service'
-import * as Icon from '../../assets/icons/db-icons'
+import * as I from '../../assets/icons/db-icons'
 import { ReactElement, useState } from 'react'
 import NewAssessmentModal from '../modals/new-assessment-modal/new-assessment-modal'
 import NewAttachmentModal from '../modals/new-attachment-modal/new-attachment-modal'
 import NewMaterialFactModal from '../modals/new-relevant-fact-modal/new-relevant-fact'
-import NewSectionModal from '../modals/new-section-modal/new-section-modal'
+import NewSessionModal from '../modals/new-session-modal/new-session-modal'
 import SmallGreenButton from '../small-green-button/small-green-button'
 import SmallRedButton from '../small-red-button/small-red-button'
 import { Card, InputContainer, Hr } from '@/assets/styles'
@@ -37,7 +37,7 @@ const NewService = () => {
                   <option>Adicionar novo serviço</option>
                 </S.Select>
                 <div>
-                  <Icon.DownOne />
+                  <I.DownOne />
                 </div>
               </InputContainer>
             </label>
@@ -45,26 +45,26 @@ const NewService = () => {
               <b>Data inicial: </b> 18/10/2022
             </div>
             <S.ButtonContainer>
-              <SmallGreenButton icon={<Icon.EditTwoLine />} />
-              <SmallRedButton icon={<Icon.TrashTwo />} />
+              <SmallGreenButton icon={<I.EditTwoLine />} />
+              <SmallRedButton icon={<I.TrashTwo />} />
             </S.ButtonContainer>
           </S.ServiceInfos>
           <Hr />
           <S.Items>
-            <S.Item onClick={() => openModal(<NewSectionModal handleClose={closeModal} />)}>
-              <Icon.MentalHealthFill />
+            <S.Item onClick={() => openModal(<NewSessionModal handleClose={closeModal} />)}>
+              <I.MentalHealthFill />
               Sessão
             </S.Item>
             <S.Item onClick={() => openModal(<NewMaterialFactModal handleClose={closeModal} />)}>
-              <Icon.PushPinFill />
+              <I.PushPinFill />
               Fato relevante
             </S.Item>
             <S.Item onClick={() => openModal(<NewAttachmentModal handleClose={closeModal} />)}>
-              <Icon.AttachmentTwo />
+              <I.AttachmentTwo />
               Anexo
             </S.Item>
             <S.Item onClick={() => openModal(<NewAssessmentModal handleClose={closeModal} />)}>
-              <Icon.TodoFill />
+              <I.TodoFill />
               Avaliação Psicológica
             </S.Item>
           </S.Items>
