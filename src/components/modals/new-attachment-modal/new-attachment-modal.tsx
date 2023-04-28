@@ -11,7 +11,7 @@ import {
   TitleInput
 } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
-import { postAttachment } from '@/services/occurrences'
+import { request } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const defaultValues: DefaultValues<AttachmentType> = {
@@ -34,12 +34,12 @@ const NewAttachmentModal = ({ handleClose }: ModalType) => {
 
   const onSubmit = async (data: AttachmentType) => {
     const files = Object.values(data.files) as unknown as FileType[]
-
     const formatedFiles = files.map(file => {
       return { filename: file.name, filesize: file.size }
     })
 
-    await postAttachment({
+    await request('post', '/occurrence', {
+      type: 'attachment',
       date: data.date,
       title: data.title,
       content: data.content,
@@ -47,7 +47,7 @@ const NewAttachmentModal = ({ handleClose }: ModalType) => {
       createdOn: new Date().toString(),
       files: formatedFiles
     })
-    
+
     location.reload()
   }
 

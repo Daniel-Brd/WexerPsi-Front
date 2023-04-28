@@ -13,7 +13,7 @@ import format from 'date-fns/format'
 import ptBR from 'date-fns/locale/pt-BR'
 import { TIMELINE_ID } from '@/utils/constants'
 import Session from '@/components/timeline/session/session'
-import { deleteOccurrence } from '@/services/occurrences'
+import { request } from '@/services/occurrences'
 import Filters from '@/components/timeline/filter/filters'
 
 const MedicalRecord = () => {
@@ -48,7 +48,7 @@ const MedicalRecord = () => {
   })
 
   const handleDelete = (timelineId: string, occurrenceId: string) => {
-    deleteOccurrence({ timelineId, occurrenceId })
+    request('delete', `/timeline/${timelineId}/occurrence/${occurrenceId}`, {})
     if (timeline?.occurrences?.length) {
       const newOccurrences = timeline?.occurrences.filter(item => item._id !== occurrenceId)
       setTimeline({ occurrences: newOccurrences })

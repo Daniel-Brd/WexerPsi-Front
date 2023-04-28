@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import { DateInput, DescriptionTextarea, FormFooter, FormHeader, TitleInput } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
-import { postRelevantFact } from '@/services/occurrences'
+import { request } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const defaultValues: DefaultValues<RelevantFactType> = {
@@ -27,7 +27,8 @@ const NewRelevantFactModal = ({ handleClose }: ModalType) => {
   })
 
   const onSubmit = async (data: Partial<RelevantFactType>) => {
-    await postRelevantFact({
+    await request('post', '/occurrence', {
+      type: 'relevant_fact',
       date: data.date,
       title: data.title as string,
       content: data.content as string,

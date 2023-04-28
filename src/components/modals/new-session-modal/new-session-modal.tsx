@@ -15,7 +15,7 @@ import {
 import { schema } from './schema'
 import * as FormStyle from '../form-components/styled-form-components'
 import { Modal, Card, Hr } from '@/assets/styles'
-import { postSession } from '@/services/occurrences'
+import { request } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const defaultValues: DefaultValues<SessionType> = {
@@ -43,7 +43,8 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
   })
 
   const onSubmit = async (data: SessionType) => {
-    await postSession({
+    await request('post', '/occurrence', {
+      type: 'session',
       date: data.date,
       time: data.time,
       title: data.title,
