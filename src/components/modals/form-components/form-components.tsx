@@ -1,6 +1,8 @@
 import { CloseCircle } from '@/assets/icons/db-icons'
 import * as FormStyle from './styled-form-components'
 import { InputContainer } from '@/assets/styles'
+import { format } from 'date-fns'
+import { ReactNode } from 'react'
 
 type FormHeaderType = {
   title: string
@@ -25,27 +27,25 @@ export const FormHeader = ({ title, handleClose }: FormHeaderType) => (
   </FormStyle.Header>
 )
 
-export const DateInput = ({ label, register, errorMessage }: DateInputType) => (
+export const DateInput = ({ label }: { label: string }) => (
   <label>
     {label}
     <InputContainer>
-      <input className="small" type="date" {...register('date')} placeholder={new Date().toLocaleDateString()} />
+      <input value={format(new Date(), 'yyyy-MM-dd')} className="small" type="date" disabled />
     </InputContainer>
-    <small>{errorMessage}</small>
   </label>
 )
 
-export const TimeInput = ({ label, register, errorMessage }) => (
+export const TimeInput = ({ id, value, label }: { id: string; value: string; label: string }) => (
   <label>
     {label}
     <InputContainer>
-      <input className="small" type="time" {...register('time')} />
+      <input id={id} value={value} className="small" type="time" disabled />
     </InputContainer>
-    <small>{errorMessage}</small>
   </label>
 )
 
-export const TitleInput = ({ sise, register, errorMessage }) => (
+export const TitleInput = ({ sise, register, errorMessage }: { sise: string; errorMessage: string | undefined }) => (
   <label>
     Título*
     <InputContainer>
@@ -55,7 +55,14 @@ export const TitleInput = ({ sise, register, errorMessage }) => (
   </label>
 )
 
-export const DescriptionTextarea = ({ label, register, errorMessage }) => (
+export const DescriptionTextarea = ({
+  label,
+  register,
+  errorMessage
+}: {
+  label: string
+  errorMessage: string | undefined
+}) => (
   <label>
     {label}
     <InputContainer>
@@ -65,17 +72,24 @@ export const DescriptionTextarea = ({ label, register, errorMessage }) => (
   </label>
 )
 
-export const ValueInput = ({ register, errorMessage }) => (
+export const ValueInput = ({ register, errorMessage }: { errorMessage: string | undefined }) => (
   <label>
     Valor
     <InputContainer>
-      <input className="small" type="text" {...register('title')} />
+      <input className="small" type="text" {...register('value')} />
     </InputContainer>
     <small>{errorMessage}</small>
   </label>
 )
 
-export const AttachmentInput = ({ register, label, errorMessage }) => (
+export const AttachmentInput = ({
+  register,
+  label,
+  errorMessage
+}: {
+  label: string
+  errorMessage: string | undefined
+}) => (
   <label>
     {label}
     <input type="file" multiple {...register('files')} />
@@ -83,25 +97,25 @@ export const AttachmentInput = ({ register, label, errorMessage }) => (
   </label>
 )
 
-export const Select = ({ label, children }) => (
+export const Select = ({ register, label, children }: { label: string; children: ReactNode }) => (
   <label>
     {label}
     <InputContainer>
-      <select>{children}</select>
+      <select {...register('method')}>{children}</select>
     </InputContainer>
   </label>
 )
 
-export const RadioSection = ({ label, children }) => (
+export const RadioSection = ({ label, children }: { label: string; children: ReactNode }) => (
   <label>
     {label}
     {children}
   </label>
 )
 
-export const RadioItem = ({ label, name, value }) => (
+export const RadioItem = ({ label, name, value, register }: { label: string; name: string; value: string }) => (
   <FormStyle.RadioItem>
-    <input type="radio" name={name} value={value} />
+    <input type="radio" name={name} value={value} {...register(`${name}`)} />
     {label}
   </FormStyle.RadioItem>
 )
@@ -112,17 +126,9 @@ export const FormFooter = ({ buttonText, handleCancel, isValid, isValidating }: 
       <p>*Campos obrigatórios</p>
       <FormStyle.ButtonContainer>
         <FormStyle.CancelButton onClick={handleCancel}>Cancelar</FormStyle.CancelButton>
-        {isValid && <FormStyle.ConfirmButton type="submit">{buttonText}</FormStyle.ConfirmButton>}
-        {!isValid && (
-          <FormStyle.ConfirmButton type="submit" disabled>
-            {buttonText}
-          </FormStyle.ConfirmButton>
-        )}
-        {isValidating && (
-          <FormStyle.ConfirmButton type="submit" disabled>
-            enviando...
-          </FormStyle.ConfirmButton>
-        )}
+        <FormStyle.ConfirmButton type="submit" disabled={!isValid || isValidating}>
+          {buttonText}
+        </FormStyle.ConfirmButton>
       </FormStyle.ButtonContainer>
     </FormStyle.Footer>
   )

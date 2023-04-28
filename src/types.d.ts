@@ -56,13 +56,9 @@ type SessionType = {
   createdOn: string
   title: string
   content: string
-  date?: string
-  time?: string
-  payment?: {
-    value: number
-    method: string
-    status: string
-  }
+  value: number | null
+  method: string
+  status: string
   handleDelete: (timelineId: string, occurrenceId: string) => void
 }
 

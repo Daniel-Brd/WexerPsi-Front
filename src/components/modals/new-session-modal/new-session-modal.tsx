@@ -18,18 +18,26 @@ import { Modal, Card, Hr } from '@/assets/styles'
 import { request } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
-const defaultValues: DefaultValues<SessionType> = {
-  date: '',
-  title: '',
-  content: ''
-}
-
 const SessionTitle = ({ number, title }: { number: number; title: string }) => (
   <FormStyle.SessionTitle>
     <FormStyle.Circle>{number}</FormStyle.Circle>
     <h2>{title}</h2>
   </FormStyle.SessionTitle>
 )
+
+const addLeadingZero = (number: number) => {
+  if (number < 10) {
+    return `0${number}`
+  }
+  return number
+}
+
+const defaultValues: DefaultValues<SessionType> = {
+  title: '',
+  content: '',
+  value: null,
+  method: ''
+}
 
 const NewSessionModal = ({ handleClose }: ModalType) => {
   const {
@@ -45,15 +53,17 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
   const onSubmit = async (data: SessionType) => {
     await request('post', '/occurrence', {
       type: 'session',
-      date: data.date,
-      time: data.time,
       title: data.title,
       content: data.content,
-      timelineId: TIMELINE_ID,
-      createdOn: new Date().toString()
+      payment: {
+        value: Number(data.value),
+        method: data.method,
+        status: data.status
+      },
+      timelineId: TIMELINE_ID
     })
 
-    location.reload()
+    // location.reload()
   }
   return (
     <Modal>
@@ -63,9 +73,19 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
             <FormHeader title="Nova Sessão" handleClose={handleClose} />
             <SessionTitle number={1} title="Dados Gerais" />
             <FormStyle.Flex>
-              <DateInput label={'data*'} errorMessage={errors.date?.message} register={register} />
-              <TimeInput label={'Hora de inicio*'} errorMessage={errors.time?.message} register={register} />
-              <TimeInput label={'Hora fim*'} errorMessage={errors.time?.message} register={register} />
+              <DateInput label={'data*'} />
+              <TimeInput
+                id={'start-time'}
+                value={`${addLeadingZero(new Date().getHours())}:${addLeadingZero(new Date().getMinutes())}`}
+                label={'Hora de inicio*'}
+              />
+              <TimeInput
+                id={'finish-time'}
+                value={`${Number(addLeadingZero(new Date().getHours())) + 1}:${addLeadingZero(
+                  new Date().getMinutes()
+                )}`}
+                label={'Hora fim*'}
+              />
             </FormStyle.Flex>
             <Hr />
             <SessionTitle number={2} title="Sessão" />
@@ -78,14 +98,17 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
             <Hr />
             <SessionTitle number={3} title="Pagamento" />
             <FormStyle.Flex>
-              <ValueInput errorMessage={errors.payment?.value?.message} register={register} />
-              <Select label={'Forma de pagamento'}>
-                <option>PIX</option>
+              <ValueInput errorMessage={errors.value?.message} register={register} />
+              <Select register={register} label={'Forma de pagamento'}>
+                <option value={'pix'}>PIX</option>
+                <option value={'Débito'}>Dédito</option>
+                <option value={'Crédito'}>Crédito</option>
+                <option value={'Dinheiro'}>Dinheiro</option>
               </Select>
               <RadioSection label={'Status'}>
                 <FormStyle.Flex>
-                  <RadioItem label={'Pago'} name={'Status'} value={'payed'} />
-                  <RadioItem label={'Não pago'} name={'Status'} value={'not-payed'} />
+                  <RadioItem label={'Pago'} name={'status'} value={'payed'} register={register} />
+                  <RadioItem label={'Não pago'} name={'status'} value={'not_payed'} register={register} />
                 </FormStyle.Flex>
               </RadioSection>
             </FormStyle.Flex>

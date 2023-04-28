@@ -40,12 +40,11 @@ const NewAttachmentModal = ({ handleClose }: ModalType) => {
 
     await request('post', '/occurrence', {
       type: 'attachment',
-      date: data.date,
+      timelineId: TIMELINE_ID,
       title: data.title,
       content: data.content,
-      timelineId: TIMELINE_ID,
-      createdOn: new Date().toString(),
-      files: formatedFiles
+      files: formatedFiles,
+      createdOn: new Date().toString()
     })
 
     location.reload()

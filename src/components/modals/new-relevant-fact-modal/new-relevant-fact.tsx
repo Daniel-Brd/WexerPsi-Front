@@ -29,11 +29,9 @@ const NewRelevantFactModal = ({ handleClose }: ModalType) => {
   const onSubmit = async (data: Partial<RelevantFactType>) => {
     await request('post', '/occurrence', {
       type: 'relevant_fact',
-      date: data.date,
       title: data.title as string,
       content: data.content as string,
-      timelineId: TIMELINE_ID,
-      createdOn: new Date().toString()
+      timelineId: TIMELINE_ID
     })
     location.reload()
   }
