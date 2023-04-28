@@ -39,7 +39,7 @@ export const Form = styled.form`
   }
 
   input[type='file'] {
-    width: 135px;
+    width: fit-content;
     height: 34px;
     background-color: var(--sintem-blue);
     border-radius: 8px;

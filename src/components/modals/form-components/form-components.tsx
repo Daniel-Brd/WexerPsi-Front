@@ -78,7 +78,7 @@ export const ValueInput = ({ register, errorMessage }) => (
 export const AttachmentInput = ({ register, label, errorMessage }) => (
   <label>
     {label}
-    <input type="file" {...register('files')} />
+    <input type="file" multiple {...register('files')} />
     <small>{errorMessage}</small>
   </label>
 )

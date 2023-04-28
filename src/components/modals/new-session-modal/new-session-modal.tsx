@@ -18,14 +18,13 @@ import { Modal, Card, Hr } from '@/assets/styles'
 import { postSession } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
-
 const defaultValues: DefaultValues<SessionType> = {
   date: '',
   title: '',
   content: ''
 }
 
-const SessionTitle = ({ number, title }: {number:number, title: string}) => (
+const SessionTitle = ({ number, title }: { number: number; title: string }) => (
   <FormStyle.SessionTitle>
     <FormStyle.Circle>{number}</FormStyle.Circle>
     <h2>{title}</h2>

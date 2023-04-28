@@ -15,3 +15,8 @@ export const RightColumn = styled.section`
   display: flex;
   flex-direction: column;
 `
+export const Timeline = styled.section`
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+`

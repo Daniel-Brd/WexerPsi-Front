@@ -8,7 +8,7 @@ export const Container = styled.div`
   font-weight: 400;
   line-height: 27px;
 
-  div{
+  div {
     display: flex;
     flex-direction: column;
     gap: 24px;
