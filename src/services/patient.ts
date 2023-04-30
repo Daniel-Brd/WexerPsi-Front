@@ -1,9 +1,8 @@
-import api from './api'
+import { request } from './occurrences'
 
 export const getPatientData = async (): Promise<PatientType> => {
-  const token = localStorage.getItem('jwt')
   try {
-    const result = await api.get('patient/64406fbd63b7d3cf01f912c9', { headers: { Authorization: token } })
+    const result = await request('get', 'patient/64406fbd63b7d3cf01f912c9', {})
     const { userId, name, birthdate, profession, schooling, demands, personalAnnotations, patientId } = result.data
     return { userId, name, birthdate, profession, schooling, demands, personalAnnotations, patientId }
   } catch (error) {

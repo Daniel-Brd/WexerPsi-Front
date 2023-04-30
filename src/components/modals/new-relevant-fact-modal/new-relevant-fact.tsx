@@ -27,7 +27,7 @@ const NewRelevantFactModal = ({ handleClose }: ModalType) => {
   })
 
   const onSubmit = async (data: Partial<RelevantFactType>) => {
-    await request('post', '/occurrence', {
+    await request('post', 'occurrence', {
       type: 'relevant_fact',
       title: data.title as string,
       content: data.content as string,

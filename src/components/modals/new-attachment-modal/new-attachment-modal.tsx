@@ -38,7 +38,7 @@ const NewAttachmentModal = ({ handleClose }: ModalType) => {
       return { filename: file.name, filesize: file.size }
     })
 
-    await request('post', '/occurrence', {
+    await request('post', 'occurrence', {
       type: 'attachment',
       timelineId: TIMELINE_ID,
       title: data.title,

@@ -51,7 +51,7 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
   })
 
   const onSubmit = async (data: SessionType) => {
-    await request('post', '/occurrence', {
+    await request('post', 'occurrence', {
       type: 'session',
       title: data.title,
       content: data.content,
@@ -63,7 +63,7 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
       timelineId: TIMELINE_ID
     })
 
-    // location.reload()
+    location.reload()
   }
   return (
     <Modal>

@@ -48,7 +48,7 @@ const MedicalRecord = () => {
   })
 
   const handleDelete = (timelineId: string, occurrenceId: string) => {
-    request('delete', `/timeline/${timelineId}/occurrence/${occurrenceId}`, {})
+    request('delete', `timeline/${timelineId}/occurrence/${occurrenceId}`, {})
     if (timeline?.occurrences?.length) {
       const newOccurrences = timeline?.occurrences.filter(item => item._id !== occurrenceId)
       setTimeline({ occurrences: newOccurrences })

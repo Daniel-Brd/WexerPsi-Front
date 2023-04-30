@@ -2,8 +2,22 @@ import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled.session'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
+import { useNavigate } from 'react-router-dom'
 
 const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDelete }: SessionType) => {
+  const navigate = useNavigate()
+
+  const truncate = (text: string) => {
+    if (text.length <= 310) {
+      return <p>{text}</p>
+    } else {
+      return (
+        <p>
+          {text.slice(0, 310)} <S.More onClick={() => navigate(`/occurrence/${occurrenceId}`)}>Ver mais...</S.More>{' '}
+        </p>
+      )
+    }
+  }
 
   return (
     <>
@@ -19,9 +33,9 @@ const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDe
             <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
           </FlexRow>
           <small>{createdOn}</small>
-          <S.Truncated>{content} </S.Truncated>
+          {truncate(content)}
         </HomeCard>
-      </Card> 
+      </Card>
     </>
   )
 }

@@ -1,11 +1,25 @@
+import { useParams } from 'react-router-dom'
 import * as S from './styled-session-page'
 import * as I from '@/assets/icons/db-icons'
+import { request } from '@/services/occurrences'
+import { useEffect } from 'react'
 
-const SessionPage = ({ sessionId }) => {
+const SessionPage = () => {
+  const id = useParams()
+  console.log(id.session)
+
+  useEffect(() => {
+    const getOccurrenceData = async () => {
+      const result = await request('get', `occurrence/${id.session}`, {})
+      console.log(result?.data)
+    }
+    getOccurrenceData()
+  }, [])
+
   return (
     <>
       <S.NavHeader>
-        <button onClick={() => handleBack()}>
+        <button>
           <I.ArrowIosLeft />
           Voltar
         </button>
@@ -16,7 +30,6 @@ const SessionPage = ({ sessionId }) => {
         <div> | </div>
         <p>
           <b>Data:</b>
-          {date}
         </p>
       </S.NavHeader>
 
