@@ -1,10 +1,10 @@
 import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
-import * as S from './styled.session'
+import * as S from './styled-session'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
 import { useNavigate } from 'react-router-dom'
 
-const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDelete }: SessionType) => {
+const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDelete }: Partial<SessionType>) => {
   const navigate = useNavigate()
 
   const truncate = (text: string) => {
@@ -33,7 +33,7 @@ const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDe
             <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
           </FlexRow>
           <small>{createdOn}</small>
-          {truncate(content)}
+          {truncate(content ? content : '')}
         </HomeCard>
       </Card>
     </>

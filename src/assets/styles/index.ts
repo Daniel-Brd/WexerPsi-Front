@@ -48,7 +48,7 @@ export const HomeCard = styled.article`
   font-family: 'Montserrat';
 
   h2 {
-    font-weight: 500;
+    font-weight: bold;
     font-size: 18px;
     color: var(--gray-900);
   }

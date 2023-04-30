@@ -15,6 +15,7 @@ import { TIMELINE_ID } from '@/utils/constants'
 import Session from '@/components/timeline/session/session'
 import { request } from '@/services/occurrences'
 import Filters from '@/components/timeline/filter/filters'
+import { ArrowheadUp } from '@/assets/icons/db-icons'
 
 const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
@@ -53,6 +54,13 @@ const MedicalRecord = () => {
       const newOccurrences = timeline?.occurrences.filter(item => item._id !== occurrenceId)
       setTimeline({ occurrences: newOccurrences })
     }
+  }
+
+  const rollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   return (
@@ -121,6 +129,7 @@ const MedicalRecord = () => {
               })}
             <Assessment />
           </S.Timeline>
+          <S.RollTop onClick={() => rollTop()}><ArrowheadUp/>Voltar para o topo</S.RollTop>
         </S.RightColumn>
       </S.Grid>
     </>
