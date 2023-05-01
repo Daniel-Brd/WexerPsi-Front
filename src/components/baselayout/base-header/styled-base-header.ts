@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Header = styled.header`
   position: fixed;
-  z-index: 999;
+  z-index: 3;
   width: 100%;
   display: flex;
   svg {

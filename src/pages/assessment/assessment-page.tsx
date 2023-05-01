@@ -2,12 +2,13 @@ import * as I from '@/assets/icons/db-icons'
 import { FirstStep, SecondStep, ThirdStep } from '../../components/assessment-steps/assessment-steps'
 import * as S from './styled-assessment-page'
 import { useNavigate, useParams } from 'react-router-dom'
+import { NavHeader } from '@/assets/styles'
 
 const AssessmentPage = ({ date }: { date: string }) => {
   const { currentStep } = useParams()
 
   const navigate = useNavigate()
-  const handleBack = () => {
+  const handlePrev = () => {
     if (currentStep === 'interview') {
       navigate('/')
     } else if (currentStep === 'test') {
@@ -17,10 +18,18 @@ const AssessmentPage = ({ date }: { date: string }) => {
     }
   }
 
+  const handleNext = () => {
+    if (currentStep === 'interview') {
+      navigate('/assessment/test')
+    } else if (currentStep === 'test') {
+      navigate('/assessment/observation')
+    } 
+  }
+
   return (
     <S.Main>
-      <S.NavHeader>
-        <button onClick={() => handleBack()}>
+      <NavHeader>
+        <button onClick={() => handlePrev()}>
           <I.ArrowIosLeft />
           Voltar
         </button>
@@ -33,7 +42,12 @@ const AssessmentPage = ({ date }: { date: string }) => {
           <b>Data:</b>
           {date}
         </p>
-      </S.NavHeader>
+        <div> | </div>
+        <button onClick={() => handleNext()}>
+          Avançar
+          <I.ArrowIosRight />
+        </button>
+      </NavHeader>
       <S.Steps>
         {currentStep === 'interview' ? (
           <>

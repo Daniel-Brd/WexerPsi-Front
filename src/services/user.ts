@@ -1,6 +1,5 @@
 import api from './api'
-
-const token = localStorage.getItem('jwt')
+import { request } from './occurrences'
 
 export const login = async (): Promise<string> => {
   try {
@@ -16,7 +15,7 @@ export const login = async (): Promise<string> => {
 
 export const getUserData = async (): Promise<UserType> => {
   try {
-    const result = await api.get('/user', { headers: { Authorization: token } })
+    const result = await request('get','user', {})
     const { id, name, email } = result.data
     return { id, name, email }
   } catch (error) {

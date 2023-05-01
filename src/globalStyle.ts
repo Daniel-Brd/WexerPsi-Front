@@ -22,8 +22,9 @@ const GlobalStyle = createGlobalStyle`
     --sistem-purple: #9D28AC;
     --sistem-pink: #EA1E61;
   }
-
+  
   *{
+    
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
@@ -40,7 +41,6 @@ const GlobalStyle = createGlobalStyle`
     all: unset;
     cursor: pointer;
   }
-
 `
 
 export default GlobalStyle

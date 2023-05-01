@@ -73,3 +73,46 @@ export const FlexRow = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+export const SmallButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  button:nth-child(1) svg {
+    fill: var(--main-green);
+  }
+  button:nth-child(2) svg {
+    fill: var(--sistem-red);
+  }
+`
+
+export const NavHeader = styled.nav`
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  display: flex;
+  gap: 20px;
+  padding: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  height: 48px;
+  width: calc(100vw - 80px);
+  border-radius: 16px;
+  background-color: var(--white);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-2);
+
+  button {
+    display: flex;
+    align-items: center;
+  }
+
+  b {
+    font-weight: 700;
+  }
+
+  svg {
+    fill: var(--gray-2);
+  }
+`

@@ -7,7 +7,7 @@ import NewMaterialFactModal from '../modals/new-relevant-fact-modal/new-relevant
 import NewSessionModal from '../modals/new-session-modal/new-session-modal'
 import SmallGreenButton from '../small-green-button/small-green-button'
 import SmallRedButton from '../small-red-button/small-red-button'
-import { Card, InputContainer, Hr } from '@/assets/styles'
+import { Card, InputContainer, Hr, SmallButtonContainer} from '@/assets/styles'
 
 const NewService = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -44,10 +44,10 @@ const NewService = () => {
             <div>
               <b>Data inicial: </b> 18/10/2022
             </div>
-            <S.ButtonContainer>
+            <SmallButtonContainer>
               <SmallGreenButton icon={<I.EditTwoLine />} />
               <SmallRedButton icon={<I.TrashTwo />} />
-            </S.ButtonContainer>
+            </SmallButtonContainer>
           </S.ServiceInfos>
           <Hr />
           <S.Items>

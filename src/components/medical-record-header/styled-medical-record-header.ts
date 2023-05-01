@@ -17,13 +17,17 @@ export const Nav = styled.nav`
 export const Button = styled.button`
   font-family: 'Comfortaa', cursive;
   width: 252px;
-  border-left: 1px solid var(--light-gray);
   border-right: 1px solid var(--light-gray);
-  border-bottom: 2px solid var(--stronger-main-green);
+  border-bottom: 2px solid var(--light-gray);
   text-align: center;
-  color: var(--stronger-main-green);
+  color: var(--light-gray);
   font-weight: 700;
   font-size: 16px;
+  
+  &:disabled{
+    color: var(--stronger-main-green);
+    border-bottom: 2px solid var(--stronger-main-green);
+  }
 `
 
 export const Input = styled.input`

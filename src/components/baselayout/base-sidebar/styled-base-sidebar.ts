@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SideBar = styled.nav`
   position: fixed;
-  z-index: 999;
+  z-index: 3;
   top: 80px;
   min-width: 80px;
   width: fit-content;

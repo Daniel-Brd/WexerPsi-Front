@@ -23,19 +23,6 @@ export const ServiceInfos = styled.section`
   }
 `
 
-export const ButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  button:nth-child(1) svg {
-    fill: var(--main-green);
-  }
-  button:nth-child(2) svg {
-    fill: var(--sistem-red);
-  }
-`
-
 export const Select = styled.select`
   appearance: none;
   width: 439px;

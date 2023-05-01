@@ -1,31 +1,22 @@
 import styled from 'styled-components'
 
-export const NavHeader = styled.nav`
-  display: flex;
-  gap: 20px;
-  padding: 16px;
-  align-items: center;
-  justify-content: flex-start;
-  height: 48px;
-  width: 100%;
-  border-radius: 16px;
-  background-color: var(--white);
-  font-size: 16px;
+
+export const Main = styled.main `
+  margin-top: 57px;
+`
+
+export const Title = styled.h1`
+  font-family: 'Comfortaa';
+  font-style: normal;
   font-weight: 400;
+  font-size: 24px;
+  line-height: 27px;
   color: var(--gray-2);
+  padding-bottom: 19px;
+  `
 
-  button {
-    display: flex;
-    align-items: center;
-  }
-
-  b {
-    font-weight: 700;
-  }
-
-  svg {
-    fill: var(--gray-2);
-  }
+export const Content = styled.main`
+  width: 924px;
 `
 
 export const PaymentSection = styled.section`

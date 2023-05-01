@@ -129,7 +129,10 @@ const MedicalRecord = () => {
               })}
             <Assessment />
           </S.Timeline>
-          <S.RollTop onClick={() => rollTop()}><ArrowheadUp/>Voltar para o topo</S.RollTop>
+          <S.RollTop onClick={() => rollTop()}>
+            <ArrowheadUp />
+            Voltar para o topo
+          </S.RollTop>
         </S.RightColumn>
       </S.Grid>
     </>
