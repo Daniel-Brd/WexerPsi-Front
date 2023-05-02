@@ -3,10 +3,16 @@ import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-relevant-fact'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
 
-
-
-const RelevantFact = ({ title, createdOn, content, occurrenceId, timelineId, handleDelete }: RelevantFactType) => {
-
+const RelevantFact = ({
+  type,
+  title,
+  createdOn,
+  content,
+  occurrenceId,
+  timelineId,
+  handleDelete,
+  handleEdit
+}: RelevantFactType) => {
   return (
     <>
       <S.Icon>
@@ -18,7 +24,10 @@ const RelevantFact = ({ title, createdOn, content, occurrenceId, timelineId, han
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
             <h2>{title}</h2>
-            <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
+            <OccurrenceOptions
+              handleDelete={() => handleDelete(timelineId, occurrenceId)}
+              handleEdit={() => handleEdit(type, occurrenceId)}
+            />
           </FlexRow>
           <small>{createdOn}</small>
           <p>{content}</p>

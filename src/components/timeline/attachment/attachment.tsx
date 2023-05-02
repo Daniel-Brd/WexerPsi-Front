@@ -4,8 +4,17 @@ import * as S from './styled-attachment'
 import pdfIcon from '@/assets/icons/pdf-files-icon 1.png'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
 
-const Attachment = ({ title, createdOn, content, files, occurrenceId, timelineId, handleDelete }: AttachmentType) => {
-
+const Attachment = ({
+  type,
+  title,
+  createdOn,
+  content,
+  files,
+  occurrenceId,
+  timelineId,
+  handleDelete,
+  handleEdit
+}: AttachmentType) => {
   return (
     <>
       <S.Icon>
@@ -17,7 +26,10 @@ const Attachment = ({ title, createdOn, content, files, occurrenceId, timelineId
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
             <h2>{title}</h2>
-            <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
+            <OccurrenceOptions
+              handleDelete={() => handleDelete(timelineId, occurrenceId)}
+              handleEdit={() => handleEdit(type, occurrenceId)}
+            />
           </FlexRow>
           <small>{createdOn}</small>
           <p>{content} </p>

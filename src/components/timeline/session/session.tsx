@@ -4,18 +4,23 @@ import * as S from './styled-session'
 import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
 import { useNavigate } from 'react-router-dom'
 
-const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDelete }: Partial<SessionType>) => {
+const Session = ({
+  type,
+  title,
+  createdOn,
+  content,
+  timelineId,
+  occurrenceId,
+  handleDelete,
+  handleEdit
+}: Partial<SessionType>) => {
   const navigate = useNavigate()
 
   const truncate = (text: string) => {
     if (text.length <= 310) {
-      return <p>{text}</p>
+      return text
     } else {
-      return (
-        <p>
-          {text.slice(0, 310)} <S.More onClick={() => navigate(`/occurrence/${occurrenceId}`)}>Ver mais...</S.More>{' '}
-        </p>
-      )
+      return text.slice(0, 310)
     }
   }
 
@@ -30,10 +35,17 @@ const Session = ({ title, createdOn, content, timelineId, occurrenceId, handleDe
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
             <h2>{title}</h2>
-            <OccurrenceOptions handleDelete={() => handleDelete(timelineId, occurrenceId)} />
+            <OccurrenceOptions
+              handleDelete={() => handleDelete(timelineId, occurrenceId)}
+              handleEdit={() => handleEdit(type, occurrenceId)}
+            />
           </FlexRow>
           <small>{createdOn}</small>
-          {truncate(content ? content : '')}
+          <p>
+            {truncate(content ? content : '')}
+            {'... '}
+            <S.More onClick={() => navigate(`/occurrence/${occurrenceId}`)}>Ver mais</S.More>
+          </p>
         </HomeCard>
       </Card>
     </>

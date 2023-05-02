@@ -5,9 +5,10 @@ import { useState } from 'react'
 
 type OccurrenceOptionsType = {
   handleDelete: () => void
+  handleEdit: () => void
 }
 
-export const OccurrenceOptions = ({ handleDelete }: OccurrenceOptionsType) => {
+export const OccurrenceOptions = ({ handleDelete, handleEdit }: OccurrenceOptionsType) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false)
 
   const toggleOption = () => {
@@ -23,7 +24,7 @@ export const OccurrenceOptions = ({ handleDelete }: OccurrenceOptionsType) => {
         <S.Container>
           <Card>
             <div>
-              <S.EditButton>
+              <S.EditButton onClick={() => handleEdit()}>
                 <I.PencilLine />
                 Editar
               </S.EditButton>

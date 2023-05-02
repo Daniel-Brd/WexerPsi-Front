@@ -16,6 +16,9 @@ import Session from '@/components/timeline/session/session'
 import { request } from '@/services/occurrences'
 import Filters from '@/components/timeline/filter/filters'
 import { ArrowheadUp } from '@/assets/icons/db-icons'
+import NewSessionModal from '@/components/modals/new-session-modal/new-session-modal'
+import NewRelevantFactModal from '@/components/modals/new-relevant-fact-modal/new-relevant-fact'
+import NewAttachmentModal from '@/components/modals/new-attachment-modal/new-attachment-modal'
 
 const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
@@ -67,6 +70,16 @@ const MedicalRecord = () => {
     }
   }
 
+  const handleEdit = (occurrenceType: string, occurrenceId: string) => {
+    if (occurrenceType === 'session') {
+      openModal(<NewSessionModal handleClose={closeModal} />)
+    } else if (occurrenceType === 'relevant_fact') {
+      openModal(<NewRelevantFactModal handleClose={closeModal} />)
+    } else if (occurrenceType === 'attachment') {
+      openModal(<NewAttachmentModal handleClose={closeModal} />)
+    }
+  }
+
   const rollTop = () => {
     window.scrollTo({
       top: 0,
@@ -102,30 +115,35 @@ const MedicalRecord = () => {
                   return (
                     <Session
                       key={_id}
+                      type={type}
                       title={title}
                       content={content}
                       createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                       occurrenceId={_id}
                       timelineId={TIMELINE_ID}
                       handleDelete={handleDelete}
+                      handleEdit={handleEdit}
                     />
                   )
                 } else if (type === 'relevant_fact') {
                   return (
                     <RelevantFact
                       key={_id}
+                      type={type}
                       title={title}
                       createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                       content={content}
-                      handleDelete={handleDelete}
                       occurrenceId={_id}
                       timelineId={TIMELINE_ID}
+                      handleDelete={handleDelete}
+                      handleEdit={handleEdit}
                     />
                   )
                 } else if (type === 'attachment') {
                   return (
                     <Attachment
                       key={_id}
+                      type={type}
                       title={title}
                       createdOn={format(new Date(createdOn), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                       files={files}
@@ -133,6 +151,7 @@ const MedicalRecord = () => {
                       occurrenceId={_id}
                       timelineId={TIMELINE_ID}
                       handleDelete={handleDelete}
+                      handleEdit={handleEdit}
                     />
                   )
                 } else if (type === 'assessment') {

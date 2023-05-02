@@ -37,11 +37,11 @@ export const DateInput = ({ label }: { label: string }) => (
   </label>
 )
 
-export const TimeInput = ({ id, value, label }: { id: string; value: string; label: string }) => (
+export const TimeInput = ({ value, label }: { value: string; label: string }) => (
   <label>
     {label}
     <InputContainer>
-      <input id={id} value={value} className="small" type="time" disabled />
+      <input value={value} className="small" type="time" disabled />
     </InputContainer>
   </label>
 )
