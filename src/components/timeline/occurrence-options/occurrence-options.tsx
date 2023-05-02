@@ -8,37 +8,37 @@ type OccurrenceOptionsType = {
 }
 
 export const OccurrenceOptions = ({ handleDelete }: OccurrenceOptionsType) => {
-
   const [isOptionOpen, setIsOptionOpen] = useState(false)
+
   const toggleOption = () => {
     isOptionOpen ? setIsOptionOpen(false) : setIsOptionOpen(true)
   }
 
-
-  return (<>
-      <button onClick={()=>toggleOption()}>
+  return (
+    <>
+      <button onClick={() => toggleOption()}>
         <I.Dots />
-      </button >
-      {isOptionOpen &&     
+      </button>
+      {isOptionOpen && (
         <S.Container>
           <Card>
             <div>
-            <S.EditButton>
-              <I.PencilLine />
-              Editar
-            </S.EditButton>
-            <S.DeleteButton onClick={() => handleDelete()}>
-              <I.DeleteBinLine />
-              Excluir
-            </S.DeleteButton>
-            <S.ExportButton>
-              <I.ExternalLinkLine />
-              Exportar
-            </S.ExportButton>
+              <S.EditButton>
+                <I.PencilLine />
+                Editar
+              </S.EditButton>
+              <S.DeleteButton onClick={() => handleDelete()}>
+                <I.DeleteBinLine />
+                Excluir
+              </S.DeleteButton>
+              <S.ExportButton>
+                <I.ExternalLinkLine />
+                Exportar
+              </S.ExportButton>
             </div>
           </Card>
         </S.Container>
-      }
-  </>
+      )}
+    </>
   )
 }

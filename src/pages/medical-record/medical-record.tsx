@@ -6,7 +6,7 @@ import NewService from '../../components/new-service/new-service'
 import Assessment from '../../components/timeline/assessment/assessment'
 import Attachment from '@/components/timeline/attachment/attachment'
 import RelevantFact from '@/components/timeline/relevant-fact/relevant-fact'
-import { useEffect, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { getPatientData } from '@/services/patient'
 import { getTimelineData } from '@/services/timeline'
 import format from 'date-fns/format'
@@ -21,6 +21,17 @@ const MedicalRecord = () => {
   const [patient, setPatient] = useState<Partial<PatientType>>()
   const [timeline, setTimeline] = useState<Partial<TimeLineType>>()
   const [filterType, setFilterType] = useState<string>('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modal, setModal] = useState<ReactElement>()
+
+  function openModal(selectedModal: ReactElement) {
+    setModal(selectedModal)
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
+  }
 
   useEffect(() => {
     const getPatient = async () => {
@@ -65,6 +76,7 @@ const MedicalRecord = () => {
 
   return (
     <>
+      {isModalOpen && modal}
       <MedicalRecordHeader />
       <S.Grid>
         <S.LeftColumn>
@@ -78,7 +90,7 @@ const MedicalRecord = () => {
           <Notes />
         </S.LeftColumn>
         <S.RightColumn>
-          <NewService />
+          <NewService openModal={openModal} closeModal={closeModal} />
           <Filters filterType={filterType} setFilterType={setFilterType} />
           <S.Timeline>
             {filteredOcurrences

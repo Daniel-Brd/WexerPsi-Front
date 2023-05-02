@@ -1,30 +1,23 @@
 import * as S from './styled-new-service'
 import * as I from '../../assets/icons/db-icons'
-import { ReactElement, useState } from 'react'
+import { ReactElement } from 'react'
 import NewAssessmentModal from '../modals/new-assessment-modal/new-assessment-modal'
 import NewAttachmentModal from '../modals/new-attachment-modal/new-attachment-modal'
 import NewMaterialFactModal from '../modals/new-relevant-fact-modal/new-relevant-fact'
 import NewSessionModal from '../modals/new-session-modal/new-session-modal'
 import SmallGreenButton from '../small-green-button/small-green-button'
 import SmallRedButton from '../small-red-button/small-red-button'
-import { Card, InputContainer, Hr, SmallButtonContainer} from '@/assets/styles'
+import { Card, InputContainer, Hr, SmallButtonContainer } from '@/assets/styles'
 
-const NewService = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [modal, setModal] = useState<ReactElement>()
-
-  function openModal(selectedModal: ReactElement) {
-    setModal(selectedModal)
-    setIsModalOpen(true)
-  }
-
-  function closeModal() {
-    setIsModalOpen(false)
-  }
-
+const NewService = ({
+  openModal,
+  closeModal
+}: {
+  openModal: (selectedModal: ReactElement) => void
+  closeModal: () => void
+}) => {
   return (
     <>
-      {isModalOpen && modal}
       <Card>
         <S.Container>
           <S.ServiceInfos>
