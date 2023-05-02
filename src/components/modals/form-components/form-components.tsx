@@ -3,6 +3,7 @@ import * as FormStyle from './styled-form-components'
 import { InputContainer } from '@/assets/styles'
 import { format } from 'date-fns'
 import { ReactNode } from 'react'
+import { UseFormRegister } from 'react-hook-form'
 
 type FormHeaderType = {
   title: string
@@ -45,7 +46,15 @@ export const TimeInput = ({ id, value, label }: { id: string; value: string; lab
   </label>
 )
 
-export const TitleInput = ({ sise, register, errorMessage }: { sise: string; errorMessage: string | undefined }) => (
+export const TitleInput = ({
+  sise,
+  register,
+  errorMessage
+}: {
+  sise: string
+  errorMessage: string | undefined
+  register: UseFormRegister<any>
+}) => (
   <label>
     Título*
     <InputContainer>
@@ -62,6 +71,7 @@ export const DescriptionTextarea = ({
 }: {
   label: string
   errorMessage: string | undefined
+  register: UseFormRegister<any>
 }) => (
   <label>
     {label}
@@ -72,7 +82,13 @@ export const DescriptionTextarea = ({
   </label>
 )
 
-export const ValueInput = ({ register, errorMessage }: { errorMessage: string | undefined }) => (
+export const ValueInput = ({
+  register,
+  errorMessage
+}: {
+  errorMessage: string | undefined
+  register: UseFormRegister<SessionType>
+}) => (
   <label>
     Valor
     <InputContainer>
@@ -89,6 +105,7 @@ export const AttachmentInput = ({
 }: {
   label: string
   errorMessage: string | undefined
+  register: UseFormRegister<AttachmentType>
 }) => (
   <label>
     {label}
@@ -97,7 +114,15 @@ export const AttachmentInput = ({
   </label>
 )
 
-export const Select = ({ register, label, children }: { label: string; children: ReactNode }) => (
+export const Select = ({
+  register,
+  label,
+  children
+}: {
+  label: string
+  children: ReactNode
+  register: UseFormRegister<SessionType>
+}) => (
   <label>
     {label}
     <InputContainer>
@@ -113,9 +138,19 @@ export const RadioSection = ({ label, children }: { label: string; children: Rea
   </label>
 )
 
-export const RadioItem = ({ label, name, value, register }: { label: string; name: string; value: string }) => (
+export const RadioItem = ({
+  label,
+  name,
+  value,
+  register
+}: {
+  label: string
+  name: 'status'
+  value: string
+  register: UseFormRegister<SessionType>
+}) => (
   <FormStyle.RadioItem>
-    <input type="radio" name={name} value={value} {...register(`${name}`)} />
+    <input type="radio" {...register(name)} name={name} value={value} />
     {label}
   </FormStyle.RadioItem>
 )

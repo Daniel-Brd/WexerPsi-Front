@@ -35,7 +35,7 @@ const NewAssessmentModal = ({ handleClose }: ModalType) => {
         <Card>
           <FormStyle.Form onSubmit={handleSubmit(onSubmit)} noValidate>
             <FormHeader title="Nova Avaliação Psicológica" handleClose={handleClose} />
-            <DateInput label={'Data*'} register={register} errorMessage={errors.date?.message} />
+            <DateInput label={'Data*'} />
             <FormStyle.Notice>
               <h2>Atenção!</h2>
               <p>

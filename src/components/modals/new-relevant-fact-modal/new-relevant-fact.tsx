@@ -42,7 +42,7 @@ const NewRelevantFactModal = ({ handleClose }: ModalType) => {
           <FormStyle.Form onSubmit={handleSubmit(onSubmit)} noValidate>
             <FormHeader title="Novo Fato Relevante" handleClose={handleClose} />
             <FormStyle.Flex>
-              <DateInput label={'Data*'} register={register} errorMessage={errors.date?.message} />
+              <DateInput label={'Data*'} />
               <TitleInput sise={'medium'} register={register} errorMessage={errors.title?.message} />
             </FormStyle.Flex>
             <DescriptionTextarea label={'Descrição*'} register={register} errorMessage={errors.content?.message} />

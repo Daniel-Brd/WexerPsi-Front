@@ -51,6 +51,7 @@ type TimeLineType = {
 }
 
 type SessionType = {
+  type: string
   occurrenceId: string
   timelineId: string
   createdOn: string
@@ -65,9 +66,11 @@ type SessionType = {
     status: string
   }
   handleDelete: (timelineId: string, occurrenceId: string) => void
+  handleEdit: (occurenceType: string, occurrenceId: string) => void
 }
 
 type RelevantFactType = {
+  type: string
   occurrenceId: string
   timelineId: string
   createdOn: string
@@ -75,15 +78,13 @@ type RelevantFactType = {
   date?: string
   content: string
   handleDelete: (timelineId: string, occurrenceId: string) => void
-}
-
-type FileType = {
-  name: string
-  size: number
-  type: string
+  handleEdit: (occurenceType: string, occurrenceId: string) => void
 }
 
 type AttachmentType = {
+  type: string
+  method?: string
+  value?: string
   occurrenceId: string
   timelineId: string
   createdOn: string
@@ -92,4 +93,11 @@ type AttachmentType = {
   content: string
   files: { filename: string; filesize: number }[]
   handleDelete: (timelineId: string, occurrenceId: string) => void
+  handleEdit: (occurenceType: string, occurrenceId: string) => void
+}
+
+type FileType = {
+  name: string
+  size: number
+  type: string
 }
