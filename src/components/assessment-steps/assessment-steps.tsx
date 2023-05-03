@@ -15,7 +15,6 @@ export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
         </S.Step>
         <S.Step className="">
           <SecondStep />
-          <I.CheckmarkCircle />
           <p>
             <I.CheckmarkCircle />
             Aplicação de teste
@@ -23,7 +22,6 @@ export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
         </S.Step>
         <S.Step className="">
           <ThirdStep />
-          <I.CheckmarkCircle />
           <p>
             <I.CheckmarkCircle />
             Observação Comportamental
@@ -41,7 +39,6 @@ export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
         </S.Step>
         <S.Step className="active">
           <SecondStep />
-          <I.CheckmarkCircle />
           <p>
             <I.CheckmarkCircle />
             Aplicação de teste
@@ -49,7 +46,6 @@ export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
         </S.Step>
         <S.Step className="">
           <ThirdStep />
-          <I.CheckmarkCircle />
           <p>
             <I.CheckmarkCircle />
             Observação Comportamental
@@ -67,7 +63,6 @@ export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
         </S.Step>
         <S.Step className="completed">
           <SecondStep />
-          <I.CheckmarkCircle />
           <p>
             <I.CheckmarkCircle />
             Aplicação de teste
@@ -75,7 +70,6 @@ export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
         </S.Step>
         <S.Step className="active">
           <ThirdStep />
-          <I.CheckmarkCircle />
           <p>
             <I.CheckmarkCircle />
             Observação Comportamental

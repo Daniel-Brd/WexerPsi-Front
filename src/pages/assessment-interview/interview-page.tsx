@@ -1,4 +1,6 @@
+import { Card, AssessmentForm } from '@/assets/styles'
 import * as S from './styled-interview-page'
+import AssessmentHeader from '@/components/assessment-header/assessment-header'
 
 const arrayDeObjetos = [
   {
@@ -29,27 +31,29 @@ const novoArray = arrayDeObjetos.map((objeto, index, array) => {
   return objeto
 })
 
-const InterviewPage = () => (
+const InterviewPage = ({ handleNext }: { handleNext: () => void }) => (
   <>
-    <form>
-      <S.Main>
-        <S.Column>
-          {novoArray
-            .filter(objeto => objeto.column === 1)
-            .map(objeto => (
-              <S.Question key={objeto.peso}>{objeto.nome}</S.Question>
-            ))}
-        </S.Column>
-        <S.Column>
-          {novoArray
-            .filter(objeto => objeto.column === 2)
-            .map(objeto => (
-              <S.Question key={objeto.peso}>{objeto.nome}</S.Question>
-            ))}
-        </S.Column>
-        <button>SUBMIT</button>
-      </S.Main>
-    </form>
+    <AssessmentForm>
+      <Card>
+        <AssessmentHeader title="Entrevista psicológica" handleNext={handleNext} />
+        <S.Questionary>
+          <S.Column>
+            {novoArray
+              .filter(objeto => objeto.column === 1)
+              .map(objeto => (
+                <S.Question key={objeto.peso}>{objeto.nome}</S.Question>
+              ))}
+          </S.Column>
+          <S.Column>
+            {novoArray
+              .filter(objeto => objeto.column === 2)
+              .map(objeto => (
+                <S.Question key={objeto.peso}>{objeto.nome}</S.Question>
+              ))}
+          </S.Column>
+        </S.Questionary>
+      </Card>
+    </AssessmentForm>
   </>
 )
 

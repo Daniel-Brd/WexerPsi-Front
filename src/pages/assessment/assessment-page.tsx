@@ -53,17 +53,17 @@ const AssessmentPage = () => {
       {currentStep === 'interview' ? (
         <>
           <AssessmentSteps currentStep={currentStep} />
-          <InterviewPage />
+          <InterviewPage handleNext={handleNext} />
         </>
       ) : currentStep === 'test' ? (
         <>
           <AssessmentSteps currentStep={currentStep} />
-          <TestPage />
+          <TestPage handleNext={handleNext} />
         </>
       ) : currentStep === 'observation' ? (
         <>
           <AssessmentSteps currentStep={currentStep} />
-          <ObservationPage />
+          <ObservationPage handleNext={handleNext} />
         </>
       ) : (
         ''

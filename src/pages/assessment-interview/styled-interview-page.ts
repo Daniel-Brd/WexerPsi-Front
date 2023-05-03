@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-export const Main = styled.main`
+export const Questionary = styled.section`
   width: 100%;
   padding-top: 57px;
   display: grid;
