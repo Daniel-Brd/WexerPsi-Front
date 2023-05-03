@@ -70,7 +70,7 @@ const MedicalRecord = () => {
     }
   }
 
-  const handleEdit = (occurrenceType: string, occurrenceId: string) => {
+  const handleEdit = (occurrenceType: string) => {
     if (occurrenceType === 'session') {
       openModal(<NewSessionModal handleClose={closeModal} />)
     } else if (occurrenceType === 'relevant_fact') {

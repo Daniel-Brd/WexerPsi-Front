@@ -7,16 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import { Modal, Card } from '@/assets/styles'
 
 const defaultValues: DefaultValues<FormType> = {
-  date: '',
-  title: '',
-  description: ''
+  date: ''
 }
 
 const NewAssessmentModal = ({ handleClose }: ModalType) => {
   const {
     handleSubmit,
-    register,
-    formState: { errors, isValid, isValidating }
+    formState: { isValid, isValidating }
   } = useForm<FormType>({
     mode: 'onBlur',
     defaultValues,

@@ -1,10 +1,12 @@
 import * as I from '@/assets/icons/db-icons'
-import { FirstStep, SecondStep, ThirdStep } from '../../components/assessment-steps/assessment-steps'
-import * as S from './styled-assessment-page'
 import { useNavigate, useParams } from 'react-router-dom'
 import { NavHeader } from '@/assets/styles'
+import InterviewPage from '../assessment-interview/interview-page'
+import { AssessmentSteps } from '@/components/assessment-steps/assessment-steps'
+import ObservationPage from '../assessment-observation/assessment-observation-page'
+import TestPage from '../assessment-test/assessment-test-page'
 
-const AssessmentPage = ({ date }: { date: string }) => {
+const AssessmentPage = () => {
   const { currentStep } = useParams()
 
   const navigate = useNavigate()
@@ -23,11 +25,11 @@ const AssessmentPage = ({ date }: { date: string }) => {
       navigate('/assessment/test')
     } else if (currentStep === 'test') {
       navigate('/assessment/observation')
-    } 
+    }
   }
 
   return (
-    <S.Main>
+    <>
       <NavHeader>
         <button onClick={() => handlePrev()}>
           <I.ArrowIosLeft />
@@ -40,7 +42,7 @@ const AssessmentPage = ({ date }: { date: string }) => {
         <div> | </div>
         <p>
           <b>Data:</b>
-          {date}
+          {'dd/mm/yyyy'}
         </p>
         <div> | </div>
         <button onClick={() => handleNext()}>
@@ -48,90 +50,25 @@ const AssessmentPage = ({ date }: { date: string }) => {
           <I.ArrowIosRight />
         </button>
       </NavHeader>
-      <S.Steps>
-        {currentStep === 'interview' ? (
-          <>
-            <S.Step className="active">
-              <FirstStep />
-              <p>
-                <I.CheckmarkCircle />
-                Entrevista Psicológica
-              </p>
-            </S.Step>
-            <S.Step className="">
-              <SecondStep />
-              <I.CheckmarkCircle />
-              <p>
-                <I.CheckmarkCircle />
-                Aplicação de teste
-              </p>
-            </S.Step>
-            <S.Step className="">
-              <ThirdStep />
-              <I.CheckmarkCircle />
-              <p>
-                <I.CheckmarkCircle />
-                Observação Comportamental
-              </p>
-            </S.Step>
-          </>
-        ) : currentStep === 'test' ? (
-          <>
-            <S.Step className="completed">
-              <FirstStep />
-              <p>
-                <I.CheckmarkCircle />
-                Entrevista Psicológica
-              </p>
-            </S.Step>
-            <S.Step className="active">
-              <SecondStep />
-              <I.CheckmarkCircle />
-              <p>
-                <I.CheckmarkCircle />
-                Aplicação de teste
-              </p>
-            </S.Step>
-            <S.Step className="">
-              <ThirdStep />
-              <I.CheckmarkCircle />
-              <p>
-                <I.CheckmarkCircle />
-                Observação Comportamental
-              </p>
-            </S.Step>
-          </>
-        ) : currentStep === 'observation' ? (
-          <>
-            <S.Step className="completed">
-              <FirstStep />
-              <p>
-                <I.CheckmarkCircle />
-                Entrevista Psicológica
-              </p>
-            </S.Step>
-            <S.Step className="completed">
-              <SecondStep />
-              <I.CheckmarkCircle />
-              <p>
-                <I.CheckmarkCircle />
-                Aplicação de teste
-              </p>
-            </S.Step>
-            <S.Step className="active">
-              <ThirdStep />
-              <I.CheckmarkCircle />
-              <p>
-                <I.CheckmarkCircle />
-                Observação Comportamental
-              </p>
-            </S.Step>
-          </>
-        ) : (
-          ''
-        )}
-      </S.Steps>
-    </S.Main>
+      {currentStep === 'interview' ? (
+        <>
+          <AssessmentSteps currentStep={currentStep} />
+          <InterviewPage handleNext={handleNext} />
+        </>
+      ) : currentStep === 'test' ? (
+        <>
+          <AssessmentSteps currentStep={currentStep} />
+          <TestPage handleNext={handleNext} />
+        </>
+      ) : currentStep === 'observation' ? (
+        <>
+          <AssessmentSteps currentStep={currentStep} />
+          <ObservationPage handleNext={handleNext} />
+        </>
+      ) : (
+        ''
+      )}
+    </>
   )
 }
 
