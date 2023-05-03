@@ -1,152 +1,89 @@
-export const FirstStep = () => (
-  <svg width="396" height="79" viewBox="0 0 396 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g filter="url(#filter0_d_7181_1879)">
-      <mask id="path-1-inside-1_7181_1879" fill="white">
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M3 7.24218C3 4.347 5.34702 2 8.24219 2H369.966C371.843 2 373.576 3.00342 374.511 4.63086L392.469 35.8887C393.397 37.5056 393.397 39.4944 392.469 41.1113L374.511 72.3691C373.576 73.9966 371.843 75 369.966 75H8.24218C5.347 75 3 72.653 3 69.7578V7.24218Z"
-        />
-      </mask>
-      <path
-        className="background"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3 7.24218C3 4.347 5.34702 2 8.24219 2H369.966C371.843 2 373.576 3.00342 374.511 4.63086L392.469 35.8887C393.397 37.5056 393.397 39.4944 392.469 41.1113L374.511 72.3691C373.576 73.9966 371.843 75 369.966 75H8.24218C5.347 75 3 72.653 3 69.7578V7.24218Z"
-        fill="white"
-      />
-      <path
-        className="border"
-        d="M392.469 35.8887L391.332 36.5415V36.5415L392.469 35.8887ZM392.469 41.1113L391.332 40.4585V40.4585L392.469 41.1113ZM374.511 72.3691L373.375 71.7163L374.511 72.3691ZM374.511 4.63086L373.375 5.28369L374.511 4.63086ZM369.966 0.689455H8.24219V3.31054H369.966V0.689455ZM373.375 5.28369L391.332 36.5415L393.605 35.2359L375.648 3.97804L373.375 5.28369ZM391.332 36.5415C392.029 37.7542 392.029 39.2458 391.332 40.4585L393.605 41.7641C394.766 39.7429 394.766 37.2571 393.605 35.2359L391.332 36.5415ZM391.332 40.4585L373.375 71.7163L375.648 73.022L393.605 41.7641L391.332 40.4585ZM8.24218 76.3105H369.966V73.6895H8.24218V76.3105ZM1.68946 7.24218V69.7578H4.31054V7.24218H1.68946ZM373.375 71.7163C372.674 72.9369 371.374 73.6895 369.966 73.6895V76.3105C372.312 76.3105 374.479 75.0563 375.648 73.022L373.375 71.7163ZM8.24219 0.689455C4.62323 0.689455 1.68946 3.62321 1.68946 7.24218H4.31054C4.31054 5.0708 6.07081 3.31054 8.24219 3.31054V0.689455ZM8.24218 73.6895C6.0708 73.6895 4.31054 71.9292 4.31054 69.7578H1.68946C1.68946 73.3768 4.62321 76.3105 8.24218 76.3105V73.6895ZM369.966 3.31054C371.374 3.31054 372.674 4.06311 373.375 5.28369L375.648 3.97804C374.479 1.94373 372.312 0.689455 369.966 0.689455V3.31054Z"
-        fill="#00995D"
-        mask="url(#path-1-inside-1_7181_1879)"
-      />
-    </g>
-    <defs>
-      <filter
-        id="filter0_d_7181_1879"
-        x="0.378911"
-        y="0.689455"
-        width="395.407"
-        height="78.2422"
-        filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
-        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feColorMatrix
-          in="SourceAlpha"
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          result="hardAlpha"
-        />
-        <feOffset dy="1.31054" />
-        <feGaussianBlur stdDeviation="1.31054" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0.215686 0 0 0 0 0.254902 0 0 0 0 0.317647 0 0 0 0.08 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7181_1879" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7181_1879" result="shape" />
-      </filter>
-    </defs>
-  </svg>
-)
+import { FirstStep, SecondStep, ThirdStep } from './db-steps'
+import * as S from './styled-assessment-steps'
+import * as I from '@/assets/icons/db-icons'
 
-export const SecondStep = () => (
-  <svg width="393" height="79" viewBox="0 0 393 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g filter="url(#filter0_d_7186_1959)">
-      <mask id="path-1-inside-1_7186_1959" fill="white">
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M371.569 4.63087C370.634 3.00342 368.901 2 367.024 2H8.1152C4.08478 2 1.56201 6.35871 3.56971 9.85348L18.5265 35.8887C19.4555 37.5056 19.4555 39.4944 18.5265 41.1113L3.56971 67.1465C1.56202 70.6413 4.08477 75 8.11519 75H367.024C368.901 75 370.634 73.9966 371.569 72.3691L389.526 41.1113C390.455 39.4944 390.455 37.5056 389.526 35.8887L371.569 4.63087Z"
-        />
-      </mask>
-      <path
-        className="background"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M371.569 4.63087C370.634 3.00342 368.901 2 367.024 2H8.1152C4.08478 2 1.56201 6.35871 3.56971 9.85348L18.5265 35.8887C19.4555 37.5056 19.4555 39.4944 18.5265 41.1113L3.56971 67.1465C1.56202 70.6413 4.08477 75 8.11519 75H367.024C368.901 75 370.634 73.9966 371.569 72.3691L389.526 41.1113C390.455 39.4944 390.455 37.5056 389.526 35.8887L371.569 4.63087Z"
-        fill="white"
-      />
-      <path
-        className="border"
-        d="M18.5265 35.8887L17.3902 36.5415L18.5265 35.8887ZM18.5265 41.1113L19.6629 41.7641H19.6629L18.5265 41.1113ZM389.526 41.1113L388.39 40.4585V40.4585L389.526 41.1113ZM389.526 35.8887L388.39 36.5415V36.5415L389.526 35.8887ZM3.56971 67.1465L2.43334 66.4937L3.56971 67.1465ZM371.569 4.63087L370.433 5.2837L371.569 4.63087ZM371.569 72.3691L370.433 71.7163L371.569 72.3691ZM3.56971 9.85348L2.43334 10.5063H2.43334L3.56971 9.85348ZM8.1152 3.31054H367.024V0.689455H8.1152V3.31054ZM19.6629 35.2359L4.70608 9.20066L2.43334 10.5063L17.3902 36.5415L19.6629 35.2359ZM19.6629 41.7641C20.8241 39.7429 20.8241 37.2571 19.6629 35.2359L17.3902 36.5415C18.0869 37.7542 18.0869 39.2458 17.3902 40.4585L19.6629 41.7641ZM4.70609 67.7993L19.6629 41.7641L17.3902 40.4585L2.43334 66.4937L4.70609 67.7993ZM367.024 73.6895H8.11519V76.3105H367.024V73.6895ZM388.39 40.4585L370.433 71.7163L372.706 73.022L390.663 41.7641L388.39 40.4585ZM388.39 36.5415C389.087 37.7542 389.087 39.2458 388.39 40.4585L390.663 41.7641C391.824 39.7429 391.824 37.2571 390.663 35.2359L388.39 36.5415ZM370.433 5.2837L388.39 36.5415L390.663 35.2359L372.706 3.97804L370.433 5.2837ZM2.43334 66.4937C-0.0762763 70.8621 3.07717 76.3105 8.11519 76.3105V73.6895C5.09238 73.6895 3.20031 70.4204 4.70609 67.7993L2.43334 66.4937ZM367.024 3.31054C368.432 3.31054 369.732 4.06311 370.433 5.2837L372.706 3.97804C371.537 1.94374 369.37 0.689455 367.024 0.689455V3.31054ZM367.024 76.3105C369.37 76.3105 371.537 75.0563 372.706 73.022L370.433 71.7163C369.732 72.9369 368.432 73.6895 367.024 73.6895V76.3105ZM8.1152 0.689455C3.07718 0.689455 -0.0762858 6.13784 2.43334 10.5063L4.70608 9.20066C3.20031 6.57958 5.09238 3.31054 8.1152 3.31054V0.689455Z"
-        fill="#00995D"
-        mask="url(#path-1-inside-1_7186_1959)"
-      />
-    </g>
-    <defs>
-      <filter
-        id="filter0_d_7186_1959"
-        x="0.244145"
-        y="0.689455"
-        width="392.6"
-        height="78.2422"
-        filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
-        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feColorMatrix
-          in="SourceAlpha"
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          result="hardAlpha"
-        />
-        <feOffset dy="1.31054" />
-        <feGaussianBlur stdDeviation="1.31054" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0.215686 0 0 0 0 0.254902 0 0 0 0 0.317647 0 0 0 0.08 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7186_1959" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7186_1959" result="shape" />
-      </filter>
-    </defs>
-  </svg>
-)
-
-export const ThirdStep = () => (
-  <svg width="373" height="79" viewBox="0 0 373 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g filter="url(#filter0_d_7186_1968)">
-      <mask id="path-1-inside-1_7186_1968" fill="white">
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M3.93787 9.85348C1.93018 6.35871 4.45295 2 8.48337 2H364.184C367.079 2 369.426 4.347 369.426 7.24218V69.7578C369.426 72.653 367.079 75 364.184 75H8.48336C4.45294 75 1.93018 70.6413 3.93788 67.1465L18.8947 41.1113C19.8236 39.4944 19.8236 37.5056 18.8947 35.8887L3.93787 9.85348Z"
-        />
-      </mask>
-      <path
-        className="background"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3.93787 9.85348C1.93018 6.35871 4.45295 2 8.48337 2H364.184C367.079 2 369.426 4.347 369.426 7.24218V69.7578C369.426 72.653 367.079 75 364.184 75H8.48336C4.45294 75 1.93018 70.6413 3.93788 67.1465L18.8947 41.1113C19.8236 39.4944 19.8236 37.5056 18.8947 35.8887L3.93787 9.85348Z"
-        fill="#FAFAFA"
-      />
-      <path
-        className="border"
-        d="M18.8947 41.1113L20.0311 41.7641L18.8947 41.1113ZM18.8947 35.8887L17.7583 36.5415L18.8947 35.8887ZM364.184 0.689455H8.48336V3.31054H364.184V0.689455ZM370.737 69.7578V7.24218H368.116V69.7578H370.737ZM8.48337 76.3105H364.184V73.6895H8.48337V76.3105ZM17.7583 40.4585L2.8015 66.4937L5.07424 67.7993L20.0311 41.7641L17.7583 40.4585ZM17.7583 36.5415C18.455 37.7542 18.455 39.2458 17.7583 40.4585L20.0311 41.7641C21.1922 39.7429 21.1922 37.2571 20.0311 35.2359L17.7583 36.5415ZM2.80151 10.5063L17.7583 36.5415L20.0311 35.2359L5.07425 9.20067L2.80151 10.5063ZM8.48337 73.6895C5.46055 73.6895 3.56847 70.4204 5.07424 67.7993L2.8015 66.4937C0.291879 70.8622 3.44534 76.3105 8.48337 76.3105V73.6895ZM368.116 69.7578C368.116 71.9292 366.355 73.6895 364.184 73.6895V76.3105C367.803 76.3105 370.737 73.3768 370.737 69.7578H368.116ZM8.48336 0.689455C3.44533 0.689455 0.291887 6.13786 2.80151 10.5063L5.07425 9.20067C3.56848 6.57958 5.46055 3.31054 8.48336 3.31054V0.689455ZM364.184 3.31054C366.355 3.31054 368.116 5.0708 368.116 7.24218H370.737C370.737 3.62321 367.803 0.689455 364.184 0.689455V3.31054Z"
-        fill="#EEEEEE"
-        mask="url(#path-1-inside-1_7186_1968)"
-      />
-    </g>
-    <defs>
-      <filter
-        id="filter0_d_7186_1968"
-        x="0.612309"
-        y="0.689455"
-        width="371.435"
-        height="78.2422"
-        filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
-        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feColorMatrix
-          in="SourceAlpha"
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          result="hardAlpha"
-        />
-        <feOffset dy="1.31054" />
-        <feGaussianBlur stdDeviation="1.31054" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0.215686 0 0 0 0 0.254902 0 0 0 0 0.317647 0 0 0 0.08 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7186_1968" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_7186_1968" result="shape" />
-      </filter>
-    </defs>
-  </svg>
+export const AssessmentSteps = ({ currentStep }: { currentStep: string }) => (
+  <S.Steps>
+    {currentStep === 'interview' ? (
+      <>
+        <S.Step className="active">
+          <FirstStep />
+          <p>
+            <I.CheckmarkCircle />
+            Entrevista Psicológica
+          </p>
+        </S.Step>
+        <S.Step className="">
+          <SecondStep />
+          <I.CheckmarkCircle />
+          <p>
+            <I.CheckmarkCircle />
+            Aplicação de teste
+          </p>
+        </S.Step>
+        <S.Step className="">
+          <ThirdStep />
+          <I.CheckmarkCircle />
+          <p>
+            <I.CheckmarkCircle />
+            Observação Comportamental
+          </p>
+        </S.Step>
+      </>
+    ) : currentStep === 'test' ? (
+      <>
+        <S.Step className="completed">
+          <FirstStep />
+          <p>
+            <I.CheckmarkCircle />
+            Entrevista Psicológica
+          </p>
+        </S.Step>
+        <S.Step className="active">
+          <SecondStep />
+          <I.CheckmarkCircle />
+          <p>
+            <I.CheckmarkCircle />
+            Aplicação de teste
+          </p>
+        </S.Step>
+        <S.Step className="">
+          <ThirdStep />
+          <I.CheckmarkCircle />
+          <p>
+            <I.CheckmarkCircle />
+            Observação Comportamental
+          </p>
+        </S.Step>
+      </>
+    ) : currentStep === 'observation' ? (
+      <>
+        <S.Step className="completed">
+          <FirstStep />
+          <p>
+            <I.CheckmarkCircle />
+            Entrevista Psicológica
+          </p>
+        </S.Step>
+        <S.Step className="completed">
+          <SecondStep />
+          <I.CheckmarkCircle />
+          <p>
+            <I.CheckmarkCircle />
+            Aplicação de teste
+          </p>
+        </S.Step>
+        <S.Step className="active">
+          <ThirdStep />
+          <I.CheckmarkCircle />
+          <p>
+            <I.CheckmarkCircle />
+            Observação Comportamental
+          </p>
+        </S.Step>
+      </>
+    ) : (
+      ''
+    )}
+  </S.Steps>
 )
