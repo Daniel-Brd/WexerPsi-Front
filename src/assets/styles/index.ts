@@ -116,3 +116,7 @@ export const NavHeader = styled.nav`
     fill: var(--gray-2);
   }
 `
+
+export const AssessmentForm = styled.form`
+  width: 1140px;
+`

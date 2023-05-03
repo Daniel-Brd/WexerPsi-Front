@@ -1,13 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const Main = styled.main`
+export const Steps = styled.header`
   padding-top: 57px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`
-
-export const Steps = styled.div`
   display: flex;
 `
 
@@ -68,4 +62,3 @@ export const Step = styled.div`
     }
   }
 `
-export const StepName = styled.p``

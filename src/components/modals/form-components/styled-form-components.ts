@@ -116,7 +116,7 @@ export const Header = styled.header`
   }
 `
 
-export const SessionTitle = styled.div`
+export const SectionTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;

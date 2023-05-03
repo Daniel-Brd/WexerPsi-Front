@@ -21,7 +21,7 @@ export const Timeline = styled.section`
 `
 export const RollTop = styled.button`
   display: flex;
-  align-itens: center;
+  align-items: center;
   gap: 8px;
   justify-self: center;
   font-weight: 400;
