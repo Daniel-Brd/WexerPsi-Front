@@ -13,10 +13,10 @@ type UrlType =
   | `timeline${string}`
   | `assessment/${string}`
 
-export const request = async (method: MethodType, url: UrlType, body: {}):Promise<AxiosResponse<any, any>> => {
+export const request = async (method: MethodType, url: UrlType, body: {}): Promise<AxiosResponse<any, any>> => {
   try {
     const result =
-      method === 'post'
+      method === 'post' || method === 'put'
         ? await api[method](url, body, { headers: { Authorization: token } })
         : await api[method](url, { headers: { Authorization: token } })
     // eslint-disable-next-line no-console

@@ -70,13 +70,13 @@ const MedicalRecord = () => {
     }
   }
 
-  const handleEdit = (occurrenceType: string, occurrenceId: string) => {
+  const handleEdit = (occurrenceType: string, prevData: PrevDataType) => {
     if (occurrenceType === 'session') {
-      openModal(<NewSessionModal handleClose={closeModal} />)
+      openModal(<NewSessionModal handleClose={closeModal} method="put" prevData={prevData} />)
     } else if (occurrenceType === 'relevant_fact') {
-      openModal(<NewRelevantFactModal handleClose={closeModal} />)
+      openModal(<NewRelevantFactModal handleClose={closeModal} method="put" prevData={prevData} />)
     } else if (occurrenceType === 'attachment') {
-      openModal(<NewAttachmentModal handleClose={closeModal} />)
+      openModal(<NewAttachmentModal handleClose={closeModal} method="put" prevData={prevData} />)
     }
   }
 

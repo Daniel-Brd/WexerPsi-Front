@@ -15,6 +15,16 @@ const Attachment = ({
   handleDelete,
   handleEdit
 }: AttachmentType) => {
+  const prevData = {
+    type,
+    title,
+    createdOn,
+    content,
+    files,
+    occurrenceId,
+    timelineId
+  }
+
   return (
     <>
       <S.Icon>
@@ -28,7 +38,7 @@ const Attachment = ({
             <h2>{title}</h2>
             <OccurrenceOptions
               handleDelete={() => handleDelete(timelineId, occurrenceId)}
-              handleEdit={() => handleEdit(type, occurrenceId)}
+              handleEdit={() => handleEdit(type, prevData)}
             />
           </FlexRow>
           <small>{createdOn}</small>
