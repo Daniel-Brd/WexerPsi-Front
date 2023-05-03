@@ -13,16 +13,16 @@ import {
   ValueInput
 } from '../form-components/form-components'
 import { schema } from './schema'
-import * as FormStyle from '../form-components/styled-form-components'
+import * as SForm from '../form-components/styled-form-components'
 import { Modal, Card, Hr } from '@/assets/styles'
 import { request } from '@/services/occurrences'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const SessionTitle = ({ number, title }: { number: number; title: string }) => (
-  <FormStyle.SessionTitle>
-    <FormStyle.Circle>{number}</FormStyle.Circle>
+  <SForm.SectionTitle>
+    <SForm.Circle>{number}</SForm.Circle>
     <h2>{title}</h2>
-  </FormStyle.SessionTitle>
+  </SForm.SectionTitle>
 )
 
 const addLeadingZero = (number: number) => {
@@ -69,24 +69,22 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
     <Modal>
       <section>
         <Card>
-          <FormStyle.Form onSubmit={handleSubmit(onSubmit)} style={{ paddingRight: '24px' }}>
+          <SForm.Form onSubmit={handleSubmit(onSubmit)} style={{ paddingRight: '24px' }}>
             <FormHeader title="Nova Sessão" handleClose={handleClose} />
             <SessionTitle number={1} title="Dados Gerais" />
-            <FormStyle.Flex>
+            <SForm.Flex>
               <DateInput label={'data*'} />
               <TimeInput
-                id={'start-time'}
                 value={`${addLeadingZero(new Date().getHours())}:${addLeadingZero(new Date().getMinutes())}`}
                 label={'Hora de inicio*'}
               />
               <TimeInput
-                id={'finish-time'}
                 value={`${Number(addLeadingZero(new Date().getHours())) + 1}:${addLeadingZero(
                   new Date().getMinutes()
                 )}`}
                 label={'Hora fim*'}
               />
-            </FormStyle.Flex>
+            </SForm.Flex>
             <Hr />
             <SessionTitle number={2} title="Sessão" />
             <TitleInput sise={'big'} errorMessage={errors.title?.message} register={register} />
@@ -97,7 +95,7 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
             />
             <Hr />
             <SessionTitle number={3} title="Pagamento" />
-            <FormStyle.Flex>
+            <SForm.Flex>
               <ValueInput errorMessage={errors.value?.message} register={register} />
               <Select register={register} label={'Forma de pagamento'}>
                 <option value={'pix'}>PIX</option>
@@ -106,14 +104,14 @@ const NewSessionModal = ({ handleClose }: ModalType) => {
                 <option value={'Dinheiro'}>Dinheiro</option>
               </Select>
               <RadioSection label={'Status'}>
-                <FormStyle.Flex>
+                <SForm.Flex>
                   <RadioItem label={'Pago'} name={'status'} value={'payed'} register={register} />
                   <RadioItem label={'Não pago'} name={'status'} value={'not_payed'} register={register} />
-                </FormStyle.Flex>
+                </SForm.Flex>
               </RadioSection>
-            </FormStyle.Flex>
+            </SForm.Flex>
             <FormFooter buttonText="Criar" handleCancel={handleClose} isValid={isValid} isValidating={isValidating} />
-          </FormStyle.Form>
+          </SForm.Form>
         </Card>
       </section>
     </Modal>

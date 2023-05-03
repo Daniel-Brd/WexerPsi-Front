@@ -1,13 +1,24 @@
 import styled from 'styled-components'
 
 export const Main = styled.main`
+  width: 100%;
   padding-top: 57px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 90px;
+`
+export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 `
 
-export const Steps = styled.div`
+export const Question = styled.section`
+  width: 100%;
+`
+
+export const Steps = styled.header`
+  padding-top: 57px;
   display: flex;
 `
 
