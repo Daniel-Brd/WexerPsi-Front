@@ -1,3 +1,15 @@
+type ModalType = {
+  handleClose: () => void
+  method: string | null
+  prevData: DataType
+}
+
+type PrevDataType = SessionType | RelevantFactType | AttachmentType
+
+type SmallIconButtonType = {
+  icon: ReactNode
+}
+
 type FormType = {
   date: string
   time: string
@@ -58,7 +70,7 @@ type SessionType = {
     status: string
   }
   handleDelete: (timelineId: string, occurrenceId: string) => void
-  handleEdit: (occurenceType: string, occurrenceId: string) => void
+  handleEdit: (occurenceType: string, data) => void
 }
 
 type RelevantFactType = {
@@ -67,10 +79,9 @@ type RelevantFactType = {
   timelineId: string
   createdOn: string
   title: string
-  date?: string
   content: string
   handleDelete: (timelineId: string, occurrenceId: string) => void
-  handleEdit: (occurenceType: string, occurrenceId: string) => void
+  handleEdit: (occurenceType: string, data) => void
 }
 
 type AttachmentType = {
@@ -85,7 +96,7 @@ type AttachmentType = {
   content: string
   files: { filename: string; filesize: number }[]
   handleDelete: (timelineId: string, occurrenceId: string) => void
-  handleEdit: (occurenceType: string, occurrenceId: string) => void
+  handleEdit: (occurenceType: string, data) => void
 }
 
 type FileType = {

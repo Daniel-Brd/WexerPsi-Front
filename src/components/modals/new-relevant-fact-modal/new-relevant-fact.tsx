@@ -7,15 +7,12 @@ import { Modal, Card } from '@/assets/styles'
 import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'
 
-const defaultValues: DefaultValues<RelevantFactType> = {
-  timelineId: '',
-  createdOn: '',
-  date: '',
-  content: '',
-  title: ''
-}
+const NewRelevantFactModal = ({ handleClose, method, prevData }: ModalType) => {
+  const defaultValues: DefaultValues<RelevantFactType> = {
+    content: method ? prevData.content : '',
+    title: method ? prevData.title : ''
+  }
 
-const NewRelevantFactModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     register,
@@ -27,12 +24,16 @@ const NewRelevantFactModal = ({ handleClose }: { handleClose: () => void }) => {
   })
 
   const onSubmit = async (data: Partial<RelevantFactType>) => {
-    await request('post', 'occurrence', {
+    const body = {
       type: 'relevant_fact',
       title: data.title as string,
       content: data.content as string,
       timelineId: TIMELINE_ID
-    })
+    }
+    !method
+      ? await request('post', 'occurrence', body)
+      : await request('put', `occurrence/${prevData.occurrenceId}`, body)
+
     location.reload()
   }
   return (

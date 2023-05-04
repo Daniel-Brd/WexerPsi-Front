@@ -14,14 +14,13 @@ import { Modal, Card } from '@/assets/styles'
 import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'
 
-const defaultValues: DefaultValues<AttachmentType> = {
-  date: '',
-  title: '',
-  content: '',
-  files: []
-}
+const NewAttachmentModal = ({ handleClose, method, prevData }: ModalType) => {
+  const defaultValues: DefaultValues<AttachmentType> = {
+    title: method ? prevData.title : '',
+    content: method ? prevData.content : '',
+    files: method ? prevData.files : []
+  }
 
-const NewAttachmentModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     register,
@@ -38,14 +37,18 @@ const NewAttachmentModal = ({ handleClose }: { handleClose: () => void }) => {
       return { filename: file.name, filesize: file.size }
     })
 
-    await request('post', 'occurrence', {
+    const body = {
       type: 'attachment',
       timelineId: TIMELINE_ID,
       title: data.title,
       content: data.content,
       files: formatedFiles,
       createdOn: new Date().toString()
-    })
+    }
+
+    !method
+      ? await request('post', 'occurrence', body)
+      : await request('put', `occurrence/${prevData.occurrenceId}`, body)
 
     location.reload()
   }

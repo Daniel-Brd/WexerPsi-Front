@@ -14,6 +14,15 @@ const Session = ({
   handleDelete,
   handleEdit
 }: Partial<SessionType>) => {
+  const prevData = {
+    type,
+    title,
+    createdOn,
+    content,
+    timelineId,
+    occurrenceId
+  }
+
   const navigate = useNavigate()
 
   const truncate = (text: string) => {
@@ -37,7 +46,7 @@ const Session = ({
             <h2>{title}</h2>
             <OccurrenceOptions
               handleDelete={() => handleDelete(timelineId, occurrenceId)}
-              handleEdit={() => handleEdit(type, occurrenceId)}
+              handleEdit={() => handleEdit(type, prevData)}
             />
           </FlexRow>
           <small>{createdOn}</small>

@@ -13,6 +13,15 @@ const RelevantFact = ({
   handleDelete,
   handleEdit
 }: RelevantFactType) => {
+  const prevData = {
+    type,
+    title,
+    createdOn,
+    content,
+    occurrenceId,
+    timelineId
+  }
+
   return (
     <>
       <S.Icon>
@@ -26,7 +35,7 @@ const RelevantFact = ({
             <h2>{title}</h2>
             <OccurrenceOptions
               handleDelete={() => handleDelete(timelineId, occurrenceId)}
-              handleEdit={() => handleEdit(type, occurrenceId)}
+              handleEdit={() => handleEdit(type, prevData)}
             />
           </FlexRow>
           <small>{createdOn}</small>

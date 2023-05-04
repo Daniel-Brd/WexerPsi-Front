@@ -32,14 +32,15 @@ const addLeadingZero = (number: number) => {
   return number
 }
 
-const defaultValues: DefaultValues<SessionType> = {
-  title: '',
-  content: '',
-  value: null,
-  method: ''
-}
+const NewSessionModal = ({ handleClose, method, prevData }: ModalType) => {
+  const defaultValues: DefaultValues<SessionType> = {
+    title: method ? prevData.title : '',
+    content: method ? prevData.content : '',
+    value: method ? prevData.value : null,
+    method: method ? prevData.method : '',
+    status: method ? prevData.status : ''
+  }
 
-const NewSessionModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     register,
@@ -51,7 +52,7 @@ const NewSessionModal = ({ handleClose }: { handleClose: () => void }) => {
   })
 
   const onSubmit = async (data: SessionType) => {
-    await request('post', 'occurrence', {
+    const body = {
       type: 'session',
       title: data.title,
       content: data.content,
@@ -61,7 +62,11 @@ const NewSessionModal = ({ handleClose }: { handleClose: () => void }) => {
         status: data.status
       },
       timelineId: TIMELINE_ID
-    })
+    }
+
+    !method
+      ? await request('post', 'occurrence', body)
+      : await request('put', `occurrence/${prevData.occurrenceId}`, body)
 
     location.reload()
   }
@@ -99,7 +104,7 @@ const NewSessionModal = ({ handleClose }: { handleClose: () => void }) => {
               <ValueInput errorMessage={errors.value?.message} register={register} />
               <Select register={register} label={'Forma de pagamento'}>
                 <option value={'pix'}>PIX</option>
-                <option value={'Débito'}>Dédito</option>
+                <option value={'Débito'}>Débito</option>
                 <option value={'Crédito'}>Crédito</option>
                 <option value={'Dinheiro'}>Dinheiro</option>
               </Select>
