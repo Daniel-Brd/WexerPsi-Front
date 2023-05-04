@@ -44,11 +44,6 @@ const AssessmentPage = () => {
           <b>Data:</b>
           {'dd/mm/yyyy'}
         </p>
-        <div> | </div>
-        <button onClick={() => handleNext()}>
-          Avançar
-          <I.ArrowIosRight />
-        </button>
       </NavHeader>
       {currentStep === 'interview' ? (
         <>
@@ -63,7 +58,7 @@ const AssessmentPage = () => {
       ) : currentStep === 'observation' ? (
         <>
           <AssessmentSteps currentStep={currentStep} />
-          <ObservationPage handleNext={handleNext} />
+          <ObservationPage />
         </>
       ) : (
         ''

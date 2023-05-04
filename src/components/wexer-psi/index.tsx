@@ -7,12 +7,10 @@ import { useEffect } from 'react'
 
 function WexerPsi() {
   const getToken = async () => {
-    const token = localStorage.getItem('jwt')
-    if (!token) {
-      const newToken = await login()
-      api.defaults.headers.Authorization = newToken
-      localStorage.setItem('jwt', newToken)
-    }
+    localStorage.removeItem('jwt')
+    const token = await login()
+    api.defaults.headers.Authorization = token
+    localStorage.setItem('jwt', token)
   }
 
   useEffect(() => {

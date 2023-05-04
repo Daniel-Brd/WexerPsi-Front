@@ -15,7 +15,7 @@ import {
 import { schema } from './schema'
 import * as SForm from '../form-components/styled-form-components'
 import { Modal, Card, Hr } from '@/assets/styles'
-import { request } from '@/services/occurrences'
+import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const SessionTitle = ({ number, title }: { number: number; title: string }) => (
@@ -39,7 +39,7 @@ const defaultValues: DefaultValues<SessionType> = {
   method: ''
 }
 
-const NewSessionModal = ({ handleClose }: ModalType) => {
+const NewSessionModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     register,

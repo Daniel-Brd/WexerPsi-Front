@@ -1,4 +1,4 @@
-import { request } from './occurrences'
+import { request } from './request'
 
 export const getPatientData = async (): Promise<PatientType> => {
   try {
@@ -6,8 +6,6 @@ export const getPatientData = async (): Promise<PatientType> => {
     const { userId, name, birthdate, profession, schooling, demands, personalAnnotations, patientId } = result.data
     return { userId, name, birthdate, profession, schooling, demands, personalAnnotations, patientId }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error)
-    return {} as PatientType
+    throw new Error(`${error}`)
   }
 }

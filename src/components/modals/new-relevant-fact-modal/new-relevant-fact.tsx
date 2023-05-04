@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import { DateInput, DescriptionTextarea, FormFooter, FormHeader, TitleInput } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
-import { request } from '@/services/occurrences'
+import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const defaultValues: DefaultValues<RelevantFactType> = {
@@ -15,7 +15,7 @@ const defaultValues: DefaultValues<RelevantFactType> = {
   title: ''
 }
 
-const NewRelevantFactModal = ({ handleClose }: ModalType) => {
+const NewRelevantFactModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     register,

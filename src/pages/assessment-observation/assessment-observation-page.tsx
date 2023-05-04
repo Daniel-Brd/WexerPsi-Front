@@ -5,12 +5,7 @@ const ObservationPage = () => (
   <>
     <AssessmentForm>
       <Card>
-        <AssessmentHeader
-          title="Observação comportamental"
-          handleNext={() => {
-            null
-          }}
-        />
+        <AssessmentHeader title="Observação comportamental" />
       </Card>
     </AssessmentForm>
   </>

@@ -1,11 +1,3 @@
-type ModalType = {
-  handleClose: () => void
-}
-
-type SmallIconButtonType = {
-  icon: ReactNode
-}
-
 type FormType = {
   date: string
   time: string
@@ -101,3 +93,15 @@ type FileType = {
   size: number
   type: string
 }
+
+type MethodType = 'get' | 'post' | 'put' | 'delete'
+
+type UrlType =
+  | 'user'
+  | 'user/login'
+  | `patient/${string}`
+  | 'occurrence'
+  | `occurrence/${string}`
+  | `timeline/${string}/occurrence/${string}`
+  | `timeline${string}`
+  | `assessment/${string}`

@@ -10,7 +10,7 @@ const defaultValues: DefaultValues<FormType> = {
   date: ''
 }
 
-const NewAssessmentModal = ({ handleClose }: ModalType) => {
+const NewAssessmentModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     formState: { isValid, isValidating }

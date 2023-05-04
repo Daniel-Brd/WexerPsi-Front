@@ -1,7 +1,8 @@
+import { ReactNode } from 'react'
 import * as S from './styled-small-green-button'
 
-const SmallGreenButton = ({ icon }: SmallIconButtonType) => {
-  return <S.Button >{icon}</S.Button>
+const SmallGreenButton = ({ icon }: { icon: ReactNode }) => {
+  return <S.Button>{icon}</S.Button>
 }
 
 export default SmallGreenButton

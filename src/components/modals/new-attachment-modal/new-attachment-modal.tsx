@@ -11,7 +11,7 @@ import {
   TitleInput
 } from '../form-components/form-components'
 import { Modal, Card } from '@/assets/styles'
-import { request } from '@/services/occurrences'
+import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'
 
 const defaultValues: DefaultValues<AttachmentType> = {
@@ -21,7 +21,7 @@ const defaultValues: DefaultValues<AttachmentType> = {
   files: []
 }
 
-const NewAttachmentModal = ({ handleClose }: ModalType) => {
+const NewAttachmentModal = ({ handleClose }: { handleClose: () => void }) => {
   const {
     handleSubmit,
     register,
