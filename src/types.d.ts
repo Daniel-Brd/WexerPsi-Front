@@ -130,6 +130,5 @@ type QuestionType = {
 type QuestionComponentType = {
   index: number
   question: QuestionType
-  register: UseFormRegister<QuestionType>
   setInterview: React.Dispatch<React.SetStateAction<QuestionType[]>>
 }

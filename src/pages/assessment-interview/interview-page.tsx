@@ -3,7 +3,6 @@ import * as S from './styled-interview-page'
 import AssessmentHeader from '@/components/assessment-header/assessment-header'
 import { useState } from 'react'
 import { Question } from '@/components/interview-form/interview-form'
-import { useForm } from 'react-hook-form'
 
 // const questions = [
 //   {
@@ -65,33 +64,24 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     }
   ])
 
-  const defaultValues = interview.map(question => question)
-
-  const { handleSubmit, register } = useForm({
-    mode: 'onBlur',
-    defaultValues
-  })
-
   const onSubmit = data => {
     console.log(data)
   }
 
   return (
     <>
-      <AssessmentForm onSubmit={handleSubmit(onSubmit)}>
+      <AssessmentForm
+        onSubmit={event => {
+          event.preventDefault()
+          onSubmit(interview)
+        }}
+      >
         <Card>
           <AssessmentHeader title="Entrevista psicológica" handleNext={handleNext} />
+          <button type="submit">submite</button>
           <S.Questionary>
             {interview.map((question, index) => {
-              return (
-                <Question
-                  key={index}
-                  index={index}
-                  question={question}
-                  register={register}
-                  setInterview={setInterview}
-                />
-              )
+              return <Question key={index} index={index} question={question} setInterview={setInterview} />
             })}
             {/* <S.Column>
               {novoArray
