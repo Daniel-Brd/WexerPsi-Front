@@ -116,3 +116,20 @@ type UrlType =
   | `timeline/${string}/occurrence/${string}`
   | `timeline${string}`
   | `assessment/${string}`
+
+type QuestionType = {
+  type: 'text' | 'radio' | 'radioAndText'
+  abstract: number
+  question: string
+  secondaryQuestion: string
+  options: string[]
+  textAnswer: string | boolean
+  optionAnswer: string
+}
+
+type QuestionComponentType = {
+  index: number
+  question: QuestionType
+  register: UseFormRegister<QuestionType>
+  setInterview: React.Dispatch<React.SetStateAction<QuestionType[]>>
+}

@@ -11,9 +11,9 @@ import {
   TimeInput,
   TitleInput,
   ValueInput
-} from '../form-components/form-components'
+} from '../modal-form/modal-form'
 import { schema } from './schema'
-import * as SForm from '../form-components/styled-form-components'
+import * as SForm from '../modal-form/styled-modal-form'
 import { Modal, Card, Hr } from '@/assets/styles'
 import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'

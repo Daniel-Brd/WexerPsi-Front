@@ -1,4 +1,4 @@
-import * as FormStyle from '../form-components/styled-form-components'
+import * as FormStyle from '../modal-form/styled-modal-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { schema } from './schema'
@@ -9,7 +9,7 @@ import {
   FormFooter,
   FormHeader,
   TitleInput
-} from '../form-components/form-components'
+} from '../modal-form/modal-form'
 import { Modal, Card } from '@/assets/styles'
 import { request } from '@/services/request'
 import { TIMELINE_ID } from '@/utils/constants'

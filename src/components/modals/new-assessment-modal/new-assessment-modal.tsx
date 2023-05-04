@@ -1,5 +1,5 @@
-import * as FormStyle from '../form-components/styled-form-components'
-import { DateInput, FormFooter, FormHeader } from '../form-components/form-components'
+import * as FormStyle from '../modal-form/styled-modal-form'
+import { DateInput, FormFooter, FormHeader } from '../modal-form/modal-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { schema } from './schema'

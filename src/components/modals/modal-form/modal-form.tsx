@@ -1,5 +1,5 @@
 import { CloseCircle } from '@/assets/icons/db-icons'
-import * as FormStyle from './styled-form-components'
+import * as FormStyle from './styled-modal-form'
 import { InputContainer } from '@/assets/styles'
 import { format } from 'date-fns'
 import { ReactNode } from 'react'
