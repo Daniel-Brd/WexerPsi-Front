@@ -32,8 +32,9 @@ const NewAssessmentModal = ({ handleClose }: ModalType) => {
         type: 'assessment',
         timelineId: TIMELINE_ID
       })
-      navigate('/assessment/interview')
-      return result
+
+      navigate(`/assessment/${result.data.occurrences[result.data.occurrences.length - 1]._id}/interview`)
+      return result.data
     } catch (error) {
       throw new Error(`${error}`)
     }

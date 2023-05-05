@@ -11,6 +11,12 @@ export const Questionary = styled.article`
   font-size: 14px;
   line-height: 17px;
 
+  h2 {
+    color: var(--blue-2);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
   .radio-container {
     display: flex;
     flex-direction: column;
@@ -41,6 +47,10 @@ export const Questionary = styled.article`
     border: 1px solid var(--gray-400);
     border-radius: 16px;
   }
+`
+
+export const Section = styled.section`
+  color: var(--blue-2);
 `
 
 export const AbstractContainer = styled.div`

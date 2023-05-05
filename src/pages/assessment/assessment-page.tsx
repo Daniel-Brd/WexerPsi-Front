@@ -7,24 +7,24 @@ import ObservationPage from '../assessment-observation/assessment-observation-pa
 import TestPage from '../assessment-test/assessment-test-page'
 
 const AssessmentPage = () => {
-  const { currentStep } = useParams()
+  const { occurrenceId, currentStep } = useParams()
 
   const navigate = useNavigate()
   const handlePrev = () => {
     if (currentStep === 'interview') {
       navigate('/')
     } else if (currentStep === 'test') {
-      navigate('/assessment/interview')
+      navigate(`/assessment/${occurrenceId}/interview`)
     } else if (currentStep === 'observation') {
-      navigate('/assessment/test')
+      navigate(`/assessment/${occurrenceId}/test`)
     }
   }
 
   const handleNext = () => {
     if (currentStep === 'interview') {
-      navigate('/assessment/test')
+      navigate(`/assessment/${occurrenceId}/test`)
     } else if (currentStep === 'test') {
-      navigate('/assessment/observation')
+      navigate(`/assessment/${occurrenceId}/observation`)
     }
   }
 

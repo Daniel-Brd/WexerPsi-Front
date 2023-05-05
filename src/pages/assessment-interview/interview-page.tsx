@@ -4,6 +4,7 @@ import AssessmentHeader from '@/components/assessment-header/assessment-header'
 import { useState } from 'react'
 import { Question } from '@/components/interview-form/interview-form'
 import { request } from '@/services/request'
+import { useParams } from 'react-router-dom'
 
 const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
   const [abstract, setAbstract] = useState<QuestionType>({
@@ -487,6 +488,9 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     }
   ])
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { occurrenceId } = useParams()
+
   const onSubmit = async (data: QuestionType[]) => {
     data.unshift(abstract)
     const body = data.map(question => {
@@ -499,7 +503,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     })
 
     try {
-      const response = await request('put', `assessment/64546407be18c4d66a498884`, { interview: body })
+      const response = await request('put', `assessment/${occurrenceId}`, { interview: body })
       handleNext()
       return response
     } catch (error) {
@@ -532,6 +536,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
           </S.AbstractContainer>
           <S.Questionary>
             <S.Column>
+              <h2>Condições para realização da avaliação</h2>
               {interview.map((question, index) => {
                 return index % 2 === 0 ? (
                   <Question key={index} index={index} question={question} setInterview={setInterview} />
