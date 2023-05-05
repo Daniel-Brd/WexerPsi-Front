@@ -1,21 +1,14 @@
 import { useState } from 'react'
 
-export const Question = ({ index, question, setInterview }: QuestionComponentType) => {
+export const Question = ({ index, question, setQuestions }: QuestionComponentType) => {
   const [textValue, setTextValue] = useState<string>('')
   const [optionValue, setOptionValue] = useState<string>('')
-
-  const addLeadingZero = (number: number) => {
-    if (number < 10) {
-      return `0${number}`
-    }
-    return number
-  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.target.type === 'text' ? setTextValue(event.target.value) : setOptionValue(event.target.value)
 
-    setInterview((prevInterview: QuestionType[]) =>
-      prevInterview.map((prevQuestion: QuestionType, prevIndex: number) => {
+    setQuestions((prevQuestions: QuestionType[]) =>
+      prevQuestions.map((prevQuestion: QuestionType, prevIndex: number) => {
         return prevIndex === index
           ? { ...prevQuestion, textAnswer: textValue, optionAnswer: optionValue }
           : prevQuestion
@@ -24,7 +17,7 @@ export const Question = ({ index, question, setInterview }: QuestionComponentTyp
   }
   return (
     <section>
-      <label htmlFor={`question${index}`}> {`${addLeadingZero(index + 1)} - ${question.question}`}</label>
+      <label htmlFor={`question${index}`}> {`${question.question}`}</label>
       {question.type === 'text' ? (
         <input
           type="text"

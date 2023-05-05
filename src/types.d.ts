@@ -118,7 +118,7 @@ type UrlType =
   | `assessment/${string}`
 
 type QuestionType = {
-  type: 'text' | 'radio' | 'radioAndText' | 'textarea'
+  type: 'text' | 'radio' | 'radioAndText' | 'textarea' | ''
   abstract: string | null
   question: string
   secondaryQuestion: string
@@ -130,5 +130,5 @@ type QuestionType = {
 type QuestionComponentType = {
   index: number
   question: QuestionType
-  setInterview: React.Dispatch<React.SetStateAction<QuestionType[]>>
+  setQuestions: React.Dispatch<React.SetStateAction<QuestionType[]>>
 }

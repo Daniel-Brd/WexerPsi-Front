@@ -1,12 +1,15 @@
-import { Card, AssessmentForm } from '@/assets/styles'
+import { Card, AssessmentForm, Hr } from '@/assets/styles'
 import * as S from './styled-interview-page'
 import AssessmentHeader from '@/components/assessment-header/assessment-header'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Question } from '@/components/interview-form/interview-form'
 import { request } from '@/services/request'
 import { useParams } from 'react-router-dom'
+import AssessmentFooter from '@/components/assessment-footer/assessment-footer'
 
 const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
+  const { occurrenceId } = useParams()
+
   const [abstract, setAbstract] = useState<QuestionType>({
     type: 'textarea',
     abstract: null,
@@ -16,11 +19,11 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     textAnswer: '',
     optionAnswer: ''
   })
-  const [interview, setInterview] = useState<QuestionType[]>([
+  const [conditionsQuestions, setConditionsQuestions] = useState<QuestionType[]>([
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Está descansado hoje? ',
+      question: '01 - Está descansado hoje? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Por quê?',
       textAnswer: '',
@@ -29,7 +32,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Dormiu bem esta noite? ',
+      question: '02 - Dormiu bem esta noite? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Quantas horas?',
       textAnswer: '',
@@ -38,7 +41,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Está alimentado?',
+      question: '03 - Está alimentado?',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -47,7 +50,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Fez uso de bebida alcoólica nas últimas horas?',
+      question: '04 - Fez uso de bebida alcoólica nas últimas horas?',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -56,7 +59,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Fez uso de alguma medicação ontem/hoje?',
+      question: '05 - Fez uso de alguma medicação ontem/hoje?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual (is)?',
       textAnswer: '',
@@ -65,7 +68,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Faz uso de lentes corretivas/óculos? ',
+      question: '06 - Faz uso de lentes corretivas/óculos? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -74,16 +77,18 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Considera-se em boas condições para realização da avaliação psicológica? ',
+      question: '07 - Considera-se em boas condições para realização da avaliação psicológica? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Por quê?',
       textAnswer: '',
       optionAnswer: ''
-    },
+    }
+  ])
+  const [familyQuestions, setFamilyQuestions] = useState<QuestionType[]>([
     {
       type: 'radio',
       abstract: null,
-      question: 'Estado civil:',
+      question: '08 - Estado civil:',
       options: ['Divorciado', 'Viúvo', 'Solteiro', 'Casado', 'União estável'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -92,7 +97,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Possui filhos?',
+      question: '09 - Possui filhos?',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -101,7 +106,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Com quem você mora?',
+      question: '10 - Com quem você mora?',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -110,7 +115,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Está enfrentando problemas familiares? ',
+      question: '11 - Está enfrentando problemas familiares? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Quais?',
       textAnswer: '',
@@ -119,7 +124,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Possui irmãos?',
+      question: '12 - Possui irmãos?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Quantos?',
       textAnswer: '',
@@ -128,7 +133,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Como é seu relacionamento com sua família?',
+      question: '13 - Como é seu relacionamento com sua família?',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -137,16 +142,18 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Na família existe alguém que necessite de cuidados médicos ou psicológicos?',
+      question: '14 - Na família existe alguém que necessite de cuidados médicos ou psicológicos?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Nota',
       textAnswer: '',
       optionAnswer: ''
-    },
+    }
+  ])
+  const [professionalQuestions, setProfessionalQuestions] = useState<QuestionType[]>([
     {
       type: 'radio',
       abstract: null,
-      question: 'Atualmente:',
+      question: '15 - Atualmente:',
       options: ['Aposentado', 'Desempregado', 'Nunca trabalhou', 'Está trabalhando'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -155,7 +162,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Função desempenhada? Há quanto tempo? ',
+      question: '16 - Função desempenhada? Há quanto tempo? ',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -164,7 +171,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Está satisfeito com o que faz?',
+      question: '17 - Está satisfeito com o que faz?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Por quê?',
       textAnswer: '',
@@ -173,7 +180,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Trabalha em que turno? ',
+      question: '18 - Trabalha em que turno? ',
       options: ['Diurno', 'Noturno', 'Rodízio de turnos Horário:'],
       secondaryQuestion: 'Nota',
       textAnswer: '',
@@ -182,16 +189,18 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Está afastado pelo INSS?',
+      question: '19 - Está afastado pelo INSS?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Por qual motivo?',
       textAnswer: '',
       optionAnswer: ''
-    },
+    }
+  ])
+  const [educationQuestions, setEducationQuestions] = useState<QuestionType[]>([
     {
       type: 'radio',
       abstract: null,
-      question: 'Escolaridade:',
+      question: '20 - Escolaridade:',
       options: [
         'Superior incompleto',
         'Superior completo',
@@ -209,7 +218,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Está estudando? ',
+      question: '21 - Está estudando? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Parou há quanto tempo?',
       textAnswer: '',
@@ -218,16 +227,18 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Ensino:',
+      question: '22 - Ensino:',
       options: ['Regular', 'Supletivo', 'A distância'],
       secondaryQuestion: 'Nota',
       textAnswer: '',
       optionAnswer: ''
-    },
+    }
+  ])
+  const [healthQuestions, setHealthQuestions] = useState<QuestionType[]>([
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Tem ou já teve problema de saúde com necessidade de acompanhamento médico/psicológico?',
+      question: '23 - Tem ou já teve problema de saúde com necessidade de acompanhamento médico/psicológico?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual',
       textAnswer: '',
@@ -236,7 +247,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Faz uso de medicamentos?',
+      question: '24 - Faz uso de medicamentos?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual (is)?',
       textAnswer: '',
@@ -245,7 +256,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Possui deficiência?',
+      question: '25 - Possui deficiência?',
       options: ['Visual', 'Fala', 'Auditiva', 'Física', 'Não'],
       secondaryQuestion: 'Qual?',
       textAnswer: '',
@@ -254,7 +265,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Sente desmaios, tontura, mal estar, dores de cabeça constantes, crises convulsivas? ',
+      question: '26 - Sente desmaios, tontura, mal estar, dores de cabeça constantes, crises convulsivas? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -263,16 +274,18 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Já sofreu algum acidente, tombo, fratura, pancada na cabeça? ',
+      question: '27 - Já sofreu algum acidente, tombo, fratura, pancada na cabeça? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
       optionAnswer: ''
-    },
+    }
+  ])
+  const [socialQuestions, setSocialQuestions] = useState<QuestionType[]>([
     {
       type: 'radioAndText',
       abstract: null,
-      question: ' Pratica alguma atividade física?',
+      question: '28 - Pratica alguma atividade física?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Quais?',
       textAnswer: '',
@@ -281,7 +294,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Faz uso de cigarros?',
+      question: '29 - Faz uso de cigarros?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Quantos por dia?',
       textAnswer: '',
@@ -290,7 +303,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'É ex-fumante?',
+      question: '30 - É ex-fumante?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Há quanto tempo',
       textAnswer: '',
@@ -299,7 +312,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Faz ingestão de café? ',
+      question: '31 - Faz ingestão de café? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Frequência',
       textAnswer: '',
@@ -308,7 +321,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Faz uso de bebida alcoólica?',
+      question: '32 - Faz uso de bebida alcoólica?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Quantidade/frequência:',
       textAnswer: '',
@@ -317,7 +330,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Já usou ou usa algum tipo de droga? ',
+      question: '33 - Já usou ou usa algum tipo de droga? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual/frequência:',
       textAnswer: '',
@@ -326,7 +339,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Faz/fez tratamento para deixar de usar?',
+      question: '34 - Faz/fez tratamento para deixar de usar?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Por quê?',
       textAnswer: '',
@@ -335,7 +348,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Quais são suas atividades de lazer, hobbies?',
+      question: '35 - Quais são suas atividades de lazer, hobbies?',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -344,7 +357,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Pratica alguma religião? ',
+      question: '36 - Pratica alguma religião? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual/frequência:',
       textAnswer: '',
@@ -353,7 +366,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Houve alguma mudança na sua rotina nas últimas semanas?',
+      question: '37 - Houve alguma mudança na sua rotina nas últimas semanas?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Nota',
       textAnswer: '',
@@ -362,7 +375,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radio',
       abstract: null,
-      question: 'Possui antecedente penal/criminal? ',
+      question: '38 - Possui antecedente penal/criminal? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: '',
       textAnswer: '',
@@ -371,7 +384,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Já teve passagem pela delegacia? ',
+      question: '39 - Já teve passagem pela delegacia? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Nota',
       textAnswer: '',
@@ -380,7 +393,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Qual a sua meta de vida?',
+      question: '40 - Qual a sua meta de vida?',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -389,16 +402,18 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Fale sobre você: 1 ponto positivo e 1 ponto negativo:',
+      question: '41 - Fale sobre você: 1 ponto positivo e 1 ponto negativo:',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
       optionAnswer: ''
-    },
+    }
+  ])
+  const [additionalQuestions, setAdditionalQuestions] = useState<QuestionType[]>([
     {
       type: 'text',
       abstract: null,
-      question: 'Sugestão para redução de acidentes no trânsito:',
+      question: '42 - Sugestão para redução de acidentes no trânsito:',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -407,7 +422,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Já possui experiência como motorista profissional?',
+      question: '43 - Já possui experiência como motorista profissional?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Tempo/Carga:',
       textAnswer: '',
@@ -416,7 +431,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Já passou por alguma situação de perigo no trânsito?',
+      question: '44 - Já passou por alguma situação de perigo no trânsito?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual?',
       textAnswer: '',
@@ -425,7 +440,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Fale sobre uma situação que te deixou mais irritado no trânsito:',
+      question: '45 - Fale sobre uma situação que te deixou mais irritado no trânsito:',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -434,7 +449,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Já sofreu acidente de trânsito?',
+      question: '46 - Já sofreu acidente de trânsito?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual?',
       textAnswer: '',
@@ -443,7 +458,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Teve multas, ponto na CNH? ',
+      question: '47 - Teve multas, ponto na CNH? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Por quê?',
       textAnswer: '',
@@ -452,7 +467,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'CNH já foi apreendida ou cassada?',
+      question: '48 - CNH já foi apreendida ou cassada?',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Porque/quando?',
       textAnswer: '',
@@ -461,7 +476,7 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'radioAndText',
       abstract: null,
-      question: 'Usa algum estimulante para dirigir? ',
+      question: '49 - Usa algum estimulante para dirigir? ',
       options: ['Sim', 'Não'],
       secondaryQuestion: 'Qual?',
       textAnswer: '',
@@ -470,7 +485,8 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
     {
       type: 'text',
       abstract: null,
-      question: 'Quando está dirigindo e recebe uma ligação ou percebe que chegou uma mensagem no celular, como reage?',
+      question:
+        '50 - Quando está dirigindo e recebe uma ligação ou percebe que chegou uma mensagem no celular, como reage?',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
@@ -480,19 +496,60 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
       type: 'text',
       abstract: null,
       question:
-        'Quando você é convidado para um evento em que você fará uso de bebida alcoólica, como se organiza, com relação à condução do veículo?',
+        '51 - Quando você é convidado para um evento em que você fará uso de bebida alcoólica, como se organiza, com relação à condução do veículo?',
       options: [],
       secondaryQuestion: '',
       textAnswer: '',
       optionAnswer: ''
     }
   ])
+  const [interview, setInterview] = useState<QuestionType[]>([
+    { type: '', abstract: null, question: '', options: [], secondaryQuestion: '', textAnswer: '', optionAnswer: '' }
+  ])
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { occurrenceId } = useParams()
+  useEffect(() => {
+    setInterview([
+      abstract,
+      ...conditionsQuestions,
+      ...familyQuestions,
+      ...professionalQuestions,
+      ...educationQuestions,
+      ...healthQuestions,
+      ...socialQuestions,
+      ...additionalQuestions
+    ])
+  }, [
+    abstract,
+    conditionsQuestions,
+    familyQuestions,
+    professionalQuestions,
+    educationQuestions,
+    healthQuestions,
+    socialQuestions,
+    additionalQuestions
+  ])
+
+  const renderQuestions = (
+    questions: QuestionType[],
+    setQuestions: React.Dispatch<React.SetStateAction<QuestionType[]>>,
+    column: number
+  ) => {
+    if (column === 1) {
+      return questions.map((question, index) => {
+        return index % 2 === 0 ? (
+          <Question key={index} index={index} question={question} setQuestions={setQuestions} />
+        ) : null
+      })
+    } else {
+      return questions.map((question, index) => {
+        return index % 2 !== 0 ? (
+          <Question key={index} index={index} question={question} setQuestions={setQuestions} />
+        ) : null
+      })
+    }
+  }
 
   const onSubmit = async (data: QuestionType[]) => {
-    data.unshift(abstract)
     const body = data.map(question => {
       return {
         ...(question.abstract && { abstract: question.abstract }),
@@ -534,23 +591,63 @@ const InterviewPage = ({ handleNext }: { handleNext: () => void }) => {
               }
             ></textarea>
           </S.AbstractContainer>
-          <S.Questionary>
-            <S.Column>
-              <h2>Condições para realização da avaliação</h2>
-              {interview.map((question, index) => {
-                return index % 2 === 0 ? (
-                  <Question key={index} index={index} question={question} setInterview={setInterview} />
-                ) : null
-              })}
-            </S.Column>
-            <S.Column>
-              {interview.map((question, index) => {
-                return index % 2 !== 0 ? (
-                  <Question key={index} index={index} question={question} setInterview={setInterview} />
-                ) : null
-              })}
-            </S.Column>
-          </S.Questionary>
+          <S.Section>
+            <h2>Condições para realização da avaliação</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(conditionsQuestions, setConditionsQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(conditionsQuestions, setConditionsQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <S.Section>
+            <h2>Histórico familiar</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(familyQuestions, setFamilyQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(familyQuestions, setFamilyQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <S.Section>
+            <h2>Vida profissional</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(professionalQuestions, setProfessionalQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(professionalQuestions, setProfessionalQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <S.Section>
+            <h2>Vida escolar</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(educationQuestions, setEducationQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(educationQuestions, setEducationQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <S.Section>
+            <h2>Saúde</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(healthQuestions, setHealthQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(healthQuestions, setHealthQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <S.Section>
+            <h2>Hábitos e conduta social</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(socialQuestions, setSocialQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(socialQuestions, setSocialQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <S.Section>
+            <h2>Complementos para atividade remunerada como condutor</h2>
+            <Hr />
+            <S.Questionary>
+              <S.Column>{renderQuestions(additionalQuestions, setAdditionalQuestions, 1)} </S.Column>
+              <S.Column>{renderQuestions(additionalQuestions, setAdditionalQuestions, 2)}</S.Column>
+            </S.Questionary>
+          </S.Section>
+          <AssessmentFooter handleNext={handleNext} />
         </Card>
       </AssessmentForm>
     </>

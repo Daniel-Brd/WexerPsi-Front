@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Questionary = styled.article`
   width: 100%;
-  padding-top: 57px;
   padding-right: 145px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -10,12 +9,6 @@ export const Questionary = styled.article`
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-
-  h2 {
-    color: var(--blue-2);
-    font-weight: 700;
-    font-size: 16px;
-  }
 
   .radio-container {
     display: flex;
@@ -50,7 +43,13 @@ export const Questionary = styled.article`
 `
 
 export const Section = styled.section`
-  color: var(--blue-2);
+  padding-top: 32px;
+  h2 {
+    color: var(--blue-2);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--blue-2);
+  }
 `
 
 export const AbstractContainer = styled.div`
