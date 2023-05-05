@@ -44,19 +44,19 @@ const NewService = ({
           </S.ServiceInfos>
           <Hr />
           <S.Items>
-            <S.Item onClick={() => openModal(<NewSessionModal handleClose={closeModal} />)}>
+            <S.Item onClick={() => openModal(<NewSessionModal handleClose={closeModal} method={null} />)}>
               <I.MentalHealthFill />
               Sessão
             </S.Item>
-            <S.Item onClick={() => openModal(<NewMaterialFactModal handleClose={closeModal} />)}>
+            <S.Item onClick={() => openModal(<NewMaterialFactModal handleClose={closeModal} method={null} />)}>
               <I.PushPinFill />
               Fato relevante
             </S.Item>
-            <S.Item onClick={() => openModal(<NewAttachmentModal handleClose={closeModal} />)}>
+            <S.Item onClick={() => openModal(<NewAttachmentModal handleClose={closeModal} method={null} />)}>
               <I.AttachmentTwo />
               Anexo
             </S.Item>
-            <S.Item onClick={() => openModal(<NewAssessmentModal handleClose={closeModal} />)}>
+            <S.Item onClick={() => openModal(<NewAssessmentModal handleClose={closeModal} method={null} />)}>
               <I.TodoFill />
               Avaliação Psicológica
             </S.Item>

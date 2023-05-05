@@ -1,7 +1,7 @@
 type ModalType = {
   handleClose: () => void
   method: string | null
-  prevData: DataType
+  prevData?: DataType
 }
 
 type PrevDataType = SessionType | RelevantFactType | AttachmentType
