@@ -5,6 +5,8 @@ import { DefaultValues, useForm } from 'react-hook-form'
 import { schema } from './schema'
 import { useNavigate } from 'react-router-dom'
 import { Modal, Card } from '@/assets/styles'
+import { request } from '@/services/request'
+import { TIMELINE_ID } from '@/utils/constants'
 
 const NewAssessmentModal = ({ handleClose }: ModalType) => {
   const defaultValues: DefaultValues<FormType> = {
@@ -24,8 +26,17 @@ const NewAssessmentModal = ({ handleClose }: ModalType) => {
 
   const navigate = useNavigate()
 
-  const onSubmit = () => {
-    navigate('/assessment/interview')
+  const onSubmit = async () => {
+    try {
+      const result = await request('post', 'occurrence', {
+        type: 'assessment',
+        timelineId: TIMELINE_ID
+      })
+      navigate('/assessment/interview')
+      return result
+    } catch (error) {
+      throw new Error(`${error}`)
+    }
   }
 
   return (

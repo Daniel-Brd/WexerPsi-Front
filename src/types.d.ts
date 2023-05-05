@@ -118,8 +118,8 @@ type UrlType =
   | `assessment/${string}`
 
 type QuestionType = {
-  type: 'text' | 'radio' | 'radioAndText'
-  abstract: number
+  type: 'text' | 'radio' | 'radioAndText' | 'textarea'
+  abstract: string | null
   question: string
   secondaryQuestion: string
   options: string[]

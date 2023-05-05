@@ -1,40 +1,41 @@
+import { useState } from 'react'
+
 export const Question = ({ index, question, setInterview }: QuestionComponentType) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value = event.target.value
+  const [textValue, setTextValue] = useState<string>('')
+  const [optionValue, setOptionValue] = useState<string>('')
 
-    if (question.type === 'radioAndText' && event.target.type === 'radio ') {
-      value = event.target.checked
-    } else if (typeof value !== 'boolean') {
-      value = String(value)
+  const addLeadingZero = (number: number) => {
+    if (number < 10) {
+      return `0${number}`
     }
-
-    setInterview(prevInterview =>
-      prevInterview.map((prevQuestion, prevIndex) =>
-        prevIndex === index ? { ...prevQuestion, textAnswer: value } : prevQuestion
-      )
-    )
+    return number
   }
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.type === 'text' ? setTextValue(event.target.value) : setOptionValue(event.target.value)
+
+    setInterview((prevInterview: QuestionType[]) =>
+      prevInterview.map((prevQuestion: QuestionType, prevIndex: number) => {
+        return prevIndex === index
+          ? { ...prevQuestion, textAnswer: textValue, optionAnswer: optionValue }
+          : prevQuestion
+      })
+    )
+  }
   return (
-    <>
-      <label htmlFor={`question${index}`}>{question.question}</label>
+    <section>
+      <label htmlFor={`question${index}`}> {`${addLeadingZero(index + 1)} - ${question.question}`}</label>
       {question.type === 'text' ? (
-        <input type="text" name={`question${index}`} id={`question${index}`} onChange={handleChange} />
+        <input
+          type="text"
+          name={`question${index}`}
+          id={`question${index}`}
+          placeholder="Resposta"
+          onChange={handleChange}
+          onBlur={handleChange}
+        />
       ) : question.type === 'radio' ? (
-        question.options.map((option: string, optionIndex: number) => (
-          <div key={optionIndex}>
-            <input
-              type="radio"
-              name={`question${index}`}
-              id={`question${index}${optionIndex}`}
-              value={option}
-              onChange={handleChange}
-            />
-            <label htmlFor={`question${index}${optionIndex}`}>{option}</label>
-          </div>
-        ))
-      ) : (
-        <div>
+        <div className="radio-container">
           {question.options.map((option: string, optionIndex: number) => (
             <div key={optionIndex}>
               <input
@@ -43,14 +44,40 @@ export const Question = ({ index, question, setInterview }: QuestionComponentTyp
                 id={`question${index}${optionIndex}`}
                 value={option}
                 onChange={handleChange}
+                onBlur={handleChange}
               />
               <label htmlFor={`question${index}${optionIndex}`}>{option}</label>
             </div>
           ))}
-          <input type="text" name={`question${index}`} id={`question${index}`} onChange={handleChange} />
+        </div>
+      ) : (
+        <div>
+          <div className="radio-container">
+            {question.options.map((option: string, optionIndex: number) => (
+              <div key={optionIndex}>
+                <input
+                  type="radio"
+                  name={`question${index}`}
+                  id={`question${index}${optionIndex}`}
+                  value={option}
+                  onChange={handleChange}
+                  onBlur={handleChange}
+                />
+                <label htmlFor={`question${index}${optionIndex}`}>{option}</label>
+              </div>
+            ))}
+          </div>
           <label htmlFor={`question${index}`}>{question.secondaryQuestion}</label>
+          <input
+            type="text"
+            name={`question${index}`}
+            id={`question${index}`}
+            placeholder="Resposta"
+            onChange={handleChange}
+            onBlur={handleChange}
+          />
         </div>
       )}
-    </>
+    </section>
   )
 }
