@@ -71,7 +71,6 @@ const MedicalRecord = () => {
   }
 
   const handleEdit = (occurrenceType: string, prevData: PrevDataType) => {
-
     if (occurrenceType === 'session') {
       openModal(<NewSessionModal handleClose={closeModal} method="put" prevData={prevData} />)
     } else if (occurrenceType === 'relevant_fact') {

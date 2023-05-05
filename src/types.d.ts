@@ -57,13 +57,14 @@ type TimeLineType = {
 type SessionType = {
   type: string
   occurrenceId: string
+  _id?: string
   timelineId: string
   createdOn: string
   title: string
   content: string
-  value: number | null
-  method: string
-  status: string
+  value?: number | null
+  method?: string
+  status?: string
   payment?: {
     value: number | null
     method: string

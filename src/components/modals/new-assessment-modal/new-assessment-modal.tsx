@@ -1,8 +1,6 @@
 import * as FormStyle from '../modal-form/styled-modal-form'
 import { DateInput, FormFooter, FormHeader } from '../modal-form/modal-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { DefaultValues, useForm } from 'react-hook-form'
-import { schema } from './schema'
 import { useNavigate } from 'react-router-dom'
 import { Modal, Card } from '@/assets/styles'
 import { request } from '@/services/request'
@@ -20,8 +18,7 @@ const NewAssessmentModal = ({ handleClose }: ModalType) => {
     formState: { isValid, isValidating }
   } = useForm<FormType>({
     mode: 'onBlur',
-    defaultValues,
-    resolver: yupResolver(schema)
+    defaultValues
   })
 
   const navigate = useNavigate()

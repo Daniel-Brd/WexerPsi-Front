@@ -13,7 +13,7 @@ const Session = ({
   occurrenceId,
   handleDelete,
   handleEdit
-}: Partial<SessionType>) => {
+}: SessionType) => {
   const prevData = {
     type,
     title,
