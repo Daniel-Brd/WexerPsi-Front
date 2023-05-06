@@ -5,8 +5,11 @@ import InterviewPage from '../assessment-interview/interview-page'
 import { AssessmentSteps } from '@/components/assessment-steps/assessment-steps'
 import ObservationPage from '../assessment-observation/assessment-observation-page'
 import TestPage from '../assessment-test/assessment-test-page'
+import { useEffect, useState } from 'react'
+import { getAssessmentData } from '@/services/occurrences'
 
 const AssessmentPage = () => {
+  const [assessment, setAssessment] = useState({ modifiedOn: '', _id: '' })
   const { occurrenceId, currentStep } = useParams()
 
   const navigate = useNavigate()
@@ -28,6 +31,14 @@ const AssessmentPage = () => {
     }
   }
 
+  useEffect(() => {
+    const assessmentData = async () => {
+      const { modifiedOn, _id } = await getAssessmentData(occurrenceId ? occurrenceId : '')
+      setAssessment({ modifiedOn, _id })
+    }
+    assessmentData()
+  }, [])
+
   return (
     <>
       <NavHeader>
@@ -42,7 +53,7 @@ const AssessmentPage = () => {
         <div> | </div>
         <p>
           <b>Data:</b>
-          {'dd/mm/yyyy'}
+          {new Date(assessment.modifiedOn).toLocaleDateString()}
         </p>
       </NavHeader>
       {currentStep === 'interview' ? (

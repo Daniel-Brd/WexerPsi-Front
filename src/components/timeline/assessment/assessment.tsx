@@ -2,8 +2,12 @@ import * as I from '@/assets/icons/db-icons'
 import { Card, FlexRow, HomeCard } from '@/assets/styles'
 import * as S from './styled-assessment'
 import SmallGreenButton from '@/components/small-green-button/small-green-button'
+import { OccurrenceOptions } from '../occurrence-options/occurrence-options'
+import { useNavigate } from 'react-router-dom'
 
-const Assessment = () => {
+const Assessment = ({ handleDelete, _id, timelineId }: AsessmentType) => {
+  const navigate = useNavigate()
+
   return (
     <>
       <S.Icon>
@@ -15,9 +19,10 @@ const Assessment = () => {
           <S.SideBar>&nbsp;</S.SideBar>
           <FlexRow>
             <h2>Avaliação psicológica</h2>
-            <button>
-              <I.Dots />
-            </button>
+            <OccurrenceOptions
+              handleDelete={() => handleDelete(timelineId, _id)}
+              handleEdit={() => navigate(`assessment/${_id}/interview`)}
+            />
           </FlexRow>
           <small>22 de setembro de 2022</small>
           <S.ItemsContainer>

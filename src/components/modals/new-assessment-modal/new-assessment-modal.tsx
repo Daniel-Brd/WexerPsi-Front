@@ -8,7 +8,6 @@ import { TIMELINE_ID } from '@/utils/constants'
 
 const NewAssessmentModal = ({ handleClose }: ModalType) => {
   const defaultValues: DefaultValues<FormType> = {
-    date: '',
     title: '',
     description: ''
   }

@@ -54,6 +54,14 @@ type TimeLineType = {
   modifiedOn: string
 }
 
+type AsessmentType = {
+  _id: string
+  handleDelete: (timelineId: string, occurrenceId: string) => void
+  timelineId: string
+  createdOn: string
+  modifiedOn: string
+}
+
 type SessionType = {
   type: string
   occurrenceId: string
@@ -117,6 +125,7 @@ type UrlType =
   | `timeline/${string}/occurrence/${string}`
   | `timeline${string}`
   | `assessment/${string}`
+  | `${string}/interview`
 
 type QuestionType = {
   type: 'text' | 'radio' | 'radioAndText' | 'textarea' | ''

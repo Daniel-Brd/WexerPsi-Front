@@ -21,7 +21,7 @@ export const OccurrenceOptions = ({ handleDelete, handleEdit }: OccurrenceOption
         <I.Dots />
       </button>
       {isOptionOpen && (
-        <S.Container>
+        <S.Container onMouseLeave={() => setIsOptionOpen(false)}>
           <Card>
             <div>
               <S.EditButton onClick={() => handleEdit()}>

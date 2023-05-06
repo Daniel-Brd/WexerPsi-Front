@@ -110,7 +110,7 @@ const MedicalRecord = () => {
               ?.slice()
               .reverse()
               .map(occurrence => {
-                const { type, _id, title, createdOn, content, files } = occurrence
+                const { type, _id, title, createdOn, modifiedOn, content, files } = occurrence
                 if (type === 'session') {
                   return (
                     <Session
@@ -155,10 +155,18 @@ const MedicalRecord = () => {
                     />
                   )
                 } else if (type === 'assessment') {
-                  return <Assessment key={_id} />
+                  return (
+                    <Assessment
+                      key={_id}
+                      handleDelete={handleDelete}
+                      _id={_id}
+                      timelineId={TIMELINE_ID}
+                      createdOn={createdOn}
+                      modifiedOn={modifiedOn}
+                    />
+                  )
                 }
               })}
-            <Assessment />
           </S.Timeline>
           <S.RollTop onClick={() => rollTop()}>
             <ArrowheadUp />

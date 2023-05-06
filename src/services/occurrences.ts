@@ -1,10 +1,10 @@
+import { TIMELINE_ID } from '@/utils/constants'
 import { request } from './request'
 
-export const getAssessmentData = async (assessmentId: string, body: {}) => {
+export const getAssessmentData = async (assessmentId: string): Promise<AsessmentType> => {
   try {
-    const response = await request('get', `assessment/${assessmentId}`, body)
-    const { _id, type, interview, tests } = response.data
-    return { _id, type, interview, tests }
+    const response = await request('get', `timeline/${TIMELINE_ID}`, {})
+    return response.data.timeline.occurrences.find((occurrence: OccurrenceType) => occurrence._id === assessmentId)
   } catch (error) {
     throw new Error(`${error}`)
   }
