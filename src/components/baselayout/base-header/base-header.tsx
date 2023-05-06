@@ -11,7 +11,7 @@ const BaseHeader = ({ handleClick }: { handleClick: () => void }) => {
     const getName = async () => {
       if (!userName) {
         const { name } = await getUserData()
-        setUserName(name as string)
+        setUserName(name ? name : '')
       }
     }
     getName()
