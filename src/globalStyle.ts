@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     --white: #FFFFFF;
     --light-gray: #F2F2F2;
     --gray-2: #4F4F4F;
+    --gray-3: #828282;
     --gray-4: #BDBDBD;
     --gray-100: #F5F5F5;
     --gray-300: #E0E0E0;
@@ -25,12 +26,15 @@ const GlobalStyle = createGlobalStyle`
   }
   
   *{
-    
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
+  }
+
+  body{
+    background-color: var(--light-gray);
   }
 
   h1{margin: 0;}

@@ -1,8 +1,8 @@
 import { request } from './request'
 
-export const login = async (): Promise<string> => {
+export const login = async (body: UserType): Promise<string> => {
   try {
-    const result = await request('post', 'user/login', { email: 'dev.danielbrandao@gmail.com', password: '.@123456' })
+    const result = await request('post', 'user/login', body)
     const { token } = result.data
     return token
   } catch (error) {

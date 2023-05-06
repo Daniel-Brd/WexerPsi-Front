@@ -38,7 +38,7 @@ const Filters = ({
           </button>
         </label>
         {isOptionOpen && (
-          <S.OptionsContainer>
+          <S.OptionsContainer onMouseLeave={() => setIsOptionOpen(false)}>
             <Card>
               <S.OptionItem
                 className="first-item"
@@ -73,7 +73,13 @@ const Filters = ({
               >
                 Anexo
               </S.OptionItem>
-              <S.OptionItem className="last-item" onClick={() => setFilterType('assessment')}>
+              <S.OptionItem
+                className="last-item"
+                onClick={() => {
+                  setFilterType('assessment')
+                  toggleOptions()
+                }}
+              >
                 Avaliação Psicológica
               </S.OptionItem>
             </Card>

@@ -15,7 +15,7 @@ const AssessmentPage = () => {
   const navigate = useNavigate()
   const handlePrev = () => {
     if (currentStep === 'interview') {
-      navigate('/')
+      navigate('/medical-record')
     } else if (currentStep === 'test') {
       navigate(`/assessment/${occurrenceId}/interview`)
     } else if (currentStep === 'observation') {

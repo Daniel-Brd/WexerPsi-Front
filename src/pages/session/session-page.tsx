@@ -39,7 +39,7 @@ const SessionPage = () => {
   const handleDelete = async () => {
     try {
       const result = await request('delete', `timeline/${TIMELINE_ID}/occurrence/${session?._id}`, {})
-      navigate('/')
+      navigate('/medical-record')
       return result
     } catch (error) {
       throw new Error(`${error}`)
@@ -51,7 +51,7 @@ const SessionPage = () => {
       {isModalOpen && <NewSessionModal handleClose={() => setIsModalOpen(false)} method="put" prevData={prevData} />}
       <S.Main>
         <NavHeader>
-          <button onClick={() => navigate('/')}>
+          <button onClick={() => navigate('/medical-record')}>
             <I.ArrowIosLeft />
             Voltar
           </button>

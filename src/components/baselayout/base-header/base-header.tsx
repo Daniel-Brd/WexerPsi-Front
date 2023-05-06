@@ -1,5 +1,5 @@
 import * as S from './styled-base-header'
-import WexerLogo from '@/assets/logo'
+import { WexerSimbol } from '@/assets/logotype/Logotype'
 import { useEffect, useState } from 'react'
 import { getUserData } from '@/services/user'
 import * as I from '@/assets/icons/db-icons'
@@ -20,7 +20,7 @@ const BaseHeader = ({ handleClick }: { handleClick: () => void }) => {
   return (
     <S.Header>
       <S.WexerLogo>
-        <WexerLogo />
+        <WexerSimbol />
       </S.WexerLogo>
       <S.HeaderContent>
         <button onClick={handleClick}>

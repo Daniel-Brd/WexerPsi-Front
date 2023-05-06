@@ -19,9 +19,10 @@ type FormType = {
 }
 
 type UserType = {
-  id: string
-  name: string
+  id?: string
+  name?: string
   email: string
+  password?: string
 }
 
 type PatientType = {

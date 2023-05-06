@@ -1,9 +1,8 @@
 import { AxiosResponse } from 'axios'
 import api from './api'
 
-const token = localStorage.getItem('jwt')
-
 export const request = async (method: MethodType, url: UrlType, body: {}): Promise<AxiosResponse<any, any>> => {
+  const token = localStorage.getItem('jwt')
   try {
     const result =
       method === 'post' || method === 'put'

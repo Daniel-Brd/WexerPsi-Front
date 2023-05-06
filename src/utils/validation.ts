@@ -14,7 +14,9 @@ const YUP_VALIDATION = {
   title: yup.string().required(),
   content: yup.string().required(),
   value: yup.string(),
-  files: yup.mixed()
+  files: yup.mixed(),
+  email: yup.string().email().required(),
+  password: yup.string().required()
 }
 
 export default YUP_VALIDATION
