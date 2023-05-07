@@ -11,7 +11,7 @@ const Router = () => {
       <Routes>
         <Route index element={<LoginPage />} />
         <Route element={<BaseLayout />}>
-          <Route path="medical-record" element={<MedicalRecord />} />
+          <Route path="/medical-record" element={<MedicalRecord />} />
           <Route path="/occurrence/:session" element={<SessionPage />} />
           <Route path="/assessment/:occurrenceId/:currentStep" element={<AssessmentPage />} />
         </Route>

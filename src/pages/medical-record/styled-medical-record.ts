@@ -12,7 +12,8 @@ export const LeftColumn = styled.section`
 `
 
 export const RightColumn = styled.section`
-  display: grid;
+display: flex;
+flex-direction: column;
 `
 export const Timeline = styled.section`
   margin-top: 25px;
@@ -20,6 +21,7 @@ export const Timeline = styled.section`
   flex-direction: column;
 `
 export const RollTop = styled.button`
+  align-self: center;
   display: flex;
   align-items: center;
   gap: 8px;
