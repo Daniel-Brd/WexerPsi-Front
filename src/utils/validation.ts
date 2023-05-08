@@ -1,7 +1,8 @@
 import * as yup from 'yup'
 
-const REQUIRED_MESSAGE = 'Por favor preencha este campo.'
+const REQUIRED_MESSAGE = 'Por favor, preencha este campo.'
 const DEFAULT_MESSAGE = 'Campo inválido'
+const INVALID_EMAIL = 'Por favor, informe um e-mail valido'
 
 yup.setLocale({
   mixed: {
@@ -15,7 +16,7 @@ const YUP_VALIDATION = {
   content: yup.string().required(),
   value: yup.string(),
   files: yup.mixed(),
-  email: yup.string().email().required(),
+  email: yup.string().email(INVALID_EMAIL).required(),
   password: yup.string().required()
 }
 

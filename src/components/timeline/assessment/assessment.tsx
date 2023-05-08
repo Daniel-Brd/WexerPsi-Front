@@ -21,7 +21,7 @@ const Assessment = ({ handleDelete, _id, timelineId }: AsessmentType) => {
             <h2>Avaliação psicológica</h2>
             <OccurrenceOptions
               handleDelete={() => handleDelete(timelineId, _id)}
-              handleEdit={() => navigate(`assessment/${_id}/interview`)}
+              handleEdit={() => navigate(`/assessment/${_id}/interview`)}
             />
           </FlexRow>
           <small>22 de setembro de 2022</small>
